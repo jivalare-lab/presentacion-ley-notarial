@@ -1,0 +1,2924 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Custodio de la Certeza Jurídica — Ley Notarial Ecuador</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ═══════════════════════════════════════════
+           DESIGN TOKENS
+        ═══════════════════════════════════════════ */
+        :root {
+            --ivory: #FAF8F5;
+            --ivory-soft: #F5F1EC;
+            --beige-warm: #EDE8E0;
+            --beige-mid: #D6CFC4;
+            --charcoal: #2C2C2C;
+            --charcoal-deep: #1A1A1A;
+            --graphite: #3D3D3D;
+            --slate: #5A5A5A;
+            --gold-muted: #B8A07E;
+            --gold-light: #D4C5A9;
+            --bronze: #A08860;
+            --white: #FFFFFF;
+
+            --font-display: 'Playfair Display', 'Georgia', serif;
+            --font-body: 'Inter', 'Helvetica Neue', sans-serif;
+            --font-accent: 'Cormorant Garamond', 'Georgia', serif;
+
+            --slide-padding: clamp(2rem, 6vw, 6rem);
+            --slide-padding-v: clamp(2rem, 5vh, 5rem);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--charcoal);
+            background: var(--charcoal-deep);
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ═══════════════════════════════════════════
+           PRESENTATION
+        ═══════════════════════════════════════════ */
+        #presentation {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.9s cubic-bezier(0.25, 0.1, 0.25, 1), visibility 0s linear 0.9s;
+            overflow: hidden;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.9s cubic-bezier(0.25, 0.1, 0.25, 1), visibility 0s linear 0s;
+            z-index: 2;
+        }
+
+        /* ═══════════════════════════════════════════
+           ANIMATIONS
+        ═══════════════════════════════════════════ */
+        .slide .slide-title,
+        .slide .slide-subtitle,
+        .slide .slide-body,
+        .slide .slide-body li,
+        .slide .slide-meta,
+        .slide .slide-divider,
+        .slide .slide-label,
+        .slide .anim {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .slide.active .slide-label {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.1s;
+        }
+
+        .slide.active .slide-title {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.2s;
+        }
+
+        .slide.active .slide-subtitle {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.35s;
+        }
+
+        .slide.active .slide-divider {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.4s;
+        }
+
+        .slide.active .slide-meta {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.45s;
+        }
+
+        .slide.active .slide-body {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.5s;
+        }
+
+        .slide.active .slide-body li:nth-child(1) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.5s;
+        }
+
+        .slide.active .slide-body li:nth-child(2) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.65s;
+        }
+
+        .slide.active .slide-body li:nth-child(3) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.8s;
+        }
+
+        .slide.active .slide-body li:nth-child(4) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.95s;
+        }
+
+        .slide.active .slide-body li:nth-child(5) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 1.1s;
+        }
+
+        .slide.active .anim-1 {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.3s;
+        }
+
+        .slide.active .anim-2 {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.5s;
+        }
+
+        .slide.active .anim-3 {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.7s;
+        }
+
+        .slide.active .anim-4 {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.9s;
+        }
+
+        .slide.active .anim-5 {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 1.1s;
+        }
+
+        /* ═══════════════════════════════════════════
+           TYPOGRAPHY GLOBALS
+        ═══════════════════════════════════════════ */
+        .slide-title {
+            font-family: var(--font-display);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -0.01em;
+        }
+
+        .slide-subtitle {
+            font-family: var(--font-accent);
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        .slide-label {
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold-muted);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .slide-body {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide-body li {
+            font-family: var(--font-body);
+            font-weight: 300;
+            line-height: 1.7;
+            position: relative;
+            padding-left: 1.5em;
+        }
+
+        .slide-body li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.7em;
+            width: 6px;
+            height: 1px;
+            background: var(--gold-muted);
+        }
+
+        .slide-body li strong {
+            font-weight: 600;
+        }
+
+        .slide-divider {
+            height: 1px;
+            background: var(--gold-muted);
+        }
+
+        /* ═══════════════════════════════════════════
+           SLIDE 1 — PORTADA
+        ═══════════════════════════════════════════ */
+        #slide-1 {
+            background: var(--ivory);
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: column;
+            position: relative;
+        }
+
+        #slide-1::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(0deg, transparent, transparent 120px, rgba(184, 160, 126, 0.04) 120px, rgba(184, 160, 126, 0.04) 121px);
+            pointer-events: none;
+        }
+
+        .slide-1-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            height: 100%;
+            padding: var(--slide-padding-v) var(--slide-padding);
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        #slide-1 .slide-number-accent {
+            font-family: var(--font-display);
+            font-size: clamp(6rem, 15vw, 14rem);
+            font-weight: 700;
+            color: rgba(184, 160, 126, 0.07);
+            position: absolute;
+            right: var(--slide-padding);
+            bottom: 5%;
+            line-height: 1;
+            z-index: 0;
+        }
+
+        #slide-1 .slide-title {
+            font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+        }
+
+        #slide-1 .slide-subtitle {
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            color: var(--slate);
+            margin-bottom: 2.5rem;
+            max-width: 640px;
+        }
+
+        #slide-1 .slide-divider {
+            width: 60px;
+            margin-bottom: 2rem;
+        }
+
+        #slide-1 .slide-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        #slide-1 .slide-meta span {
+            font-family: var(--font-body);
+            font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+            font-weight: 400;
+            color: var(--slate);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        #slide-1 .slide-meta span:last-child {
+            color: var(--gold-muted);
+            font-weight: 500;
+        }
+
+        /* ═══════════════════════════════════════════
+           SLIDE 2 — AGENDA
+        ═══════════════════════════════════════════ */
+        #slide-2 {
+            background: var(--charcoal-deep);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide-2-content {
+            max-width: 960px;
+            width: 100%;
+            padding: var(--slide-padding-v) var(--slide-padding);
+        }
+
+        #slide-2 .slide-title {
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+            color: var(--ivory);
+            margin-bottom: 0.5rem;
+        }
+
+        #slide-2 .slide-divider {
+            width: 50px;
+            margin-bottom: 2.5rem;
+        }
+
+        .agenda-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .agenda-block {
+            border: 1px solid rgba(184, 160, 126, 0.2);
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .slide.active .agenda-block:nth-child(1) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.4s;
+        }
+
+        .slide.active .agenda-block:nth-child(2) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.6s;
+        }
+
+        .slide.active .agenda-block:nth-child(3) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.8s;
+        }
+
+        .slide.active .agenda-block:nth-child(4) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 1.0s;
+        }
+
+        .agenda-number {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: rgba(184, 160, 126, 0.2);
+            line-height: 1;
+        }
+
+        .agenda-block h3 {
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            font-weight: 600;
+            color: var(--gold-light);
+            line-height: 1.3;
+        }
+
+        .agenda-block p {
+            font-family: var(--font-body);
+            font-size: clamp(0.78rem, 1vw, 0.88rem);
+            color: rgba(214, 207, 196, 0.6);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* ═══════════════════════════════════════════
+           SLIDE 3 — ESCRIBANOS (2-col with image)
+        ═══════════════════════════════════════════ */
+        #slide-3 {
+            background: var(--ivory-soft);
+            flex-direction: row;
+        }
+
+        .slide-3-image {
+            width: 48%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-3-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.05);
+        }
+
+        .slide-3-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, transparent 70%, var(--ivory-soft));
+        }
+
+        .slide-3-text {
+            width: 52%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: var(--slide-padding-v) var(--slide-padding);
+        }
+
+        #slide-3 .slide-title {
+            font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        #slide-3 .slide-divider {
+            width: 40px;
+            margin-bottom: 2rem;
+        }
+
+        #slide-3 .slide-body {
+            gap: 1.5rem;
+        }
+
+        #slide-3 .slide-body li {
+            font-size: clamp(0.88rem, 1.3vw, 1.02rem);
+            color: var(--graphite);
+        }
+
+        /* ═══════════════════════════════════════════
+           SLIDE 4 — CLEMENTE YEROVI (HERO)
+        ═══════════════════════════════════════════ */
+        #slide-4 {
+            background: var(--charcoal-deep);
+            flex-direction: row;
+        }
+
+        .slide-4-portrait {
+            width: 42%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .slide-4-portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            filter: grayscale(30%) sepia(20%) contrast(1.05);
+        }
+
+        .slide-4-portrait::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                    rgba(26, 26, 26, 0.15) 0%,
+                    transparent 30%,
+                    transparent 65%,
+                    rgba(26, 26, 26, 0.6) 100%);
+            z-index: 1;
+        }
+
+        .slide-4-portrait::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, transparent 60%, var(--charcoal-deep));
+            z-index: 2;
+        }
+
+        .slide-4-portrait-caption {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            z-index: 3;
+        }
+
+        .slide-4-portrait-caption span {
+            font-family: var(--font-accent);
+            font-size: 0.85rem;
+            font-style: italic;
+            color: rgba(212, 197, 169, 0.7);
+            letter-spacing: 0.05em;
+        }
+
+        .slide-4-text {
+            width: 58%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: var(--slide-padding-v) var(--slide-padding);
+            position: relative;
+            z-index: 1;
+        }
+
+        #slide-4 .year-stamp {
+            font-family: var(--font-display);
+            font-size: clamp(4rem, 10vw, 8rem);
+            font-weight: 800;
+            color: rgba(184, 160, 126, 0.08);
+            position: absolute;
+            right: 2rem;
+            bottom: 2rem;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        #slide-4 .slide-title {
+            font-size: clamp(1.8rem, 3.8vw, 3rem);
+            color: var(--ivory);
+            margin-bottom: 0.4rem;
+        }
+
+        #slide-4 .slide-subtitle {
+            font-size: clamp(1rem, 1.6vw, 1.2rem);
+            color: var(--gold-light);
+            margin-bottom: 0.5rem;
+        }
+
+        #slide-4 .slide-divider {
+            width: 45px;
+            margin-bottom: 2rem;
+        }
+
+        #slide-4 .slide-body {
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        #slide-4 .slide-body li {
+            font-size: clamp(0.88rem, 1.3vw, 1rem);
+            color: var(--beige-mid);
+        }
+
+        #slide-4 .slide-body li::before {
+            background: var(--gold-muted);
+        }
+
+        /* Decreto card */
+        .decreto-card {
+            border: 1px solid rgba(184, 160, 126, 0.3);
+            padding: 1.4rem 1.6rem;
+            background: rgba(184, 160, 126, 0.04);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .slide.active .decreto-card {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 1.05s;
+        }
+
+        .decreto-card-header {
+            font-family: var(--font-body);
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold-muted);
+            margin-bottom: 0.6rem;
+        }
+
+        .decreto-card-title {
+            font-family: var(--font-display);
+            font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+            font-weight: 600;
+            color: var(--ivory);
+            margin-bottom: 0.5rem;
+        }
+
+        .decreto-card-body {
+            font-family: var(--font-accent);
+            font-size: clamp(0.78rem, 1.1vw, 0.9rem);
+            font-style: italic;
+            color: rgba(214, 207, 196, 0.6);
+            line-height: 1.6;
+        }
+
+        /* ═══════════════════════════════════════════
+           SLIDE 5 — LO QUE CAMBIÓ LA LEY 1404
+        ═══════════════════════════════════════════ */
+        #slide-5 {
+            background: var(--beige-warm);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide-5-content {
+            max-width: 980px;
+            width: 100%;
+            padding: var(--slide-padding-v) var(--slide-padding);
+        }
+
+        #slide-5 .slide-title {
+            font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        #slide-5 .slide-divider {
+            width: 50px;
+            background: var(--bronze);
+            margin-bottom: 2.5rem;
+        }
+
+        .cambios-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .cambio-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .slide.active .cambio-item:nth-child(1) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.4s;
+        }
+
+        .slide.active .cambio-item:nth-child(2) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.6s;
+        }
+
+        .slide.active .cambio-item:nth-child(3) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.8s;
+        }
+
+        .cambio-numero {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 800;
+            color: rgba(160, 136, 96, 0.2);
+            line-height: 1;
+        }
+
+        .cambio-item h3 {
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 1.5vw, 1.15rem);
+            font-weight: 600;
+            color: var(--charcoal);
+            line-height: 1.3;
+        }
+
+        .cambio-divider {
+            width: 30px;
+            height: 1px;
+            background: var(--bronze);
+        }
+
+        .cambio-item p {
+            font-family: var(--font-body);
+            font-size: clamp(0.8rem, 1.1vw, 0.9rem);
+            color: var(--slate);
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        /* ═══════════════════════════════════════════
+           SLIDE 6 — LÍNEA DEL TIEMPO
+        ═══════════════════════════════════════════ */
+        #slide-6 {
+            background: var(--charcoal-deep);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide-6-content {
+            max-width: 1080px;
+            width: 100%;
+            padding: var(--slide-padding-v) var(--slide-padding);
+        }
+
+        #slide-6 .slide-title {
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+            color: var(--ivory);
+            margin-bottom: 0.5rem;
+        }
+
+        #slide-6 .slide-divider {
+            width: 45px;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7rem;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, var(--gold-muted) 10%, var(--gold-muted) 90%, transparent);
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            padding: 1rem 0;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .slide.active .timeline-item:nth-child(1) {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 0.3s;
+        }
+
+        .slide.active .timeline-item:nth-child(2) {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 0.5s;
+        }
+
+        .slide.active .timeline-item:nth-child(3) {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 0.7s;
+        }
+
+        .slide.active .timeline-item:nth-child(4) {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 0.9s;
+        }
+
+        .slide.active .timeline-item:nth-child(5) {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 1.1s;
+        }
+
+        .slide.active .timeline-item:nth-child(6) {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 1.3s;
+        }
+
+        .timeline-year {
+            font-family: var(--font-display);
+            font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+            font-weight: 700;
+            color: var(--gold-muted);
+            width: 5rem;
+            flex-shrink: 0;
+            text-align: right;
+            padding-top: 0.1rem;
+        }
+
+        .timeline-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--gold-muted);
+            flex-shrink: 0;
+            margin-top: 0.3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-dot.major {
+            width: 14px;
+            height: 14px;
+            background: var(--gold-light);
+            box-shadow: 0 0 0 3px rgba(184, 160, 126, 0.2);
+        }
+
+        .timeline-text h4 {
+            font-family: var(--font-display);
+            font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+            font-weight: 600;
+            color: var(--ivory);
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-text p {
+            font-family: var(--font-body);
+            font-size: clamp(0.75rem, 1vw, 0.85rem);
+            color: rgba(214, 207, 196, 0.6);
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        /* ═══════════════════════════════════════════
+           SLIDE 7 — DE TESTIGO A JUEZ DE PAZ
+        ═══════════════════════════════════════════ */
+        #slide-7 {
+            background: var(--beige-warm);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide-7-content {
+            max-width: 980px;
+            width: 100%;
+            padding: var(--slide-padding-v) var(--slide-padding);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .slide-7-left {}
+
+        #slide-7 .slide-title {
+            font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        #slide-7 .slide-subtitle {
+            font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+            color: var(--slate);
+            margin-bottom: 0.5rem;
+        }
+
+        #slide-7 .slide-divider {
+            width: 45px;
+            background: var(--bronze);
+            margin-bottom: 1.5rem;
+        }
+
+        #slide-7 .slide-body {
+            gap: 1.3rem;
+        }
+
+        #slide-7 .slide-body li {
+            font-size: clamp(0.85rem, 1.2vw, 0.98rem);
+            color: var(--graphite);
+        }
+
+        #slide-7 .slide-body li::before {
+            background: var(--bronze);
+        }
+
+        .slide-7-quote-block {
+            border-left: 2px solid var(--bronze);
+            padding: 1.5rem 2rem;
+            background: rgba(160, 136, 96, 0.06);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .slide.active .slide-7-quote-block {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.9s;
+        }
+
+        .slide-7-quote-block blockquote {
+            font-family: var(--font-accent);
+            font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+            font-style: italic;
+            color: var(--charcoal);
+            line-height: 1.7;
+            margin-bottom: 0.75rem;
+        }
+
+        .slide-7-quote-block cite {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            color: var(--slate);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* ═══════════════════════════════════════════
+           SLIDE 8 — REQUISITOS PARA SER NOTARIO
+        ═══════════════════════════════════════════ */
+        #slide-8 {
+            background: var(--ivory);
+            flex-direction: row;
+            align-items: stretch;
+        }
+
+        .slide-8-left {
+            width: 38%;
+            background: var(--charcoal-deep);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: var(--slide-padding-v) var(--slide-padding);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-8-left::after {
+            content: 'Art.\A6';
+            white-space: pre;
+            font-family: var(--font-display);
+            font-size: 8rem;
+            font-weight: 800;
+            color: rgba(184, 160, 126, 0.06);
+            position: absolute;
+            right: 1rem;
+            bottom: 2rem;
+            line-height: 1;
+            text-align: right;
+        }
+
+        #slide-8 .slide-title {
+            font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+            color: var(--ivory);
+            margin-bottom: 0.5rem;
+        }
+
+        #slide-8 .slide-subtitle {
+            font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+            color: var(--gold-light);
+            margin-bottom: 0.5rem;
+        }
+
+        #slide-8 .slide-divider {
+            width: 40px;
+            margin-bottom: 1.5rem;
+        }
+
+        .slide-8-right {
+            width: 62%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: var(--slide-padding-v) var(--slide-padding);
+        }
+
+        .requisitos-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .requisito-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .slide.active .requisito-item:nth-child(1) {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 0.3s;
+        }
+
+        .slide.active .requisito-item:nth-child(2) {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 0.5s;
+        }
+
+        .slide.active .requisito-item:nth-child(3) {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 0.7s;
+        }
+
+        .slide.active .requisito-item:nth-child(4) {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 0.9s;
+        }
+
+        .slide.active .requisito-item:nth-child(5) {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 1.1s;
+        }
+
+        .requisito-check {
+            width: 22px;
+            height: 22px;
+            border: 1px solid var(--gold-muted);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .requisito-check svg {
+            width: 10px;
+            height: 10px;
+            stroke: var(--gold-muted);
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .requisito-text h4 {
+            font-family: var(--font-body);
+            font-size: clamp(0.9rem, 1.3vw, 1rem);
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 0.15rem;
+        }
+
+        .requisito-text p {
+            font-family: var(--font-body);
+            font-size: clamp(0.78rem, 1vw, 0.88rem);
+            color: var(--slate);
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        /* ═══════════════════════════════════════════
+           SLIDE 9 — PROHIBICIONES ART. 14
+        ═══════════════════════════════════════════ */
+        #slide-9 {
+            background: var(--charcoal);
+            flex-direction: row;
+        }
+
+        .slide-9-accent {
+            width: 8px;
+            background: linear-gradient(to bottom, var(--gold-muted), var(--bronze));
+            flex-shrink: 0;
+        }
+
+        .slide-9-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: var(--slide-padding-v) var(--slide-padding);
+        }
+
+        #slide-9 .slide-title {
+            font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+            color: var(--ivory);
+            margin-bottom: 0.5rem;
+        }
+
+        #slide-9 .slide-subtitle {
+            font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+            color: var(--gold-light);
+            margin-bottom: 0.5rem;
+        }
+
+        #slide-9 .slide-divider {
+            width: 45px;
+            margin-bottom: 2rem;
+        }
+
+        .prohibiciones-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+
+        .prohibicion-card {
+            border: 1px solid rgba(184, 160, 126, 0.15);
+            padding: 1.2rem 1.4rem;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .slide.active .prohibicion-card:nth-child(1) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.4s;
+        }
+
+        .slide.active .prohibicion-card:nth-child(2) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.6s;
+        }
+
+        .slide.active .prohibicion-card:nth-child(3) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.8s;
+        }
+
+        .slide.active .prohibicion-card:nth-child(4) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 1.0s;
+        }
+
+        .prohibicion-card h4 {
+            font-family: var(--font-display);
+            font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+            font-weight: 600;
+            color: var(--gold-light);
+            margin-bottom: 0.4rem;
+            line-height: 1.3;
+        }
+
+        .prohibicion-card p {
+            font-family: var(--font-body);
+            font-size: clamp(0.75rem, 1vw, 0.85rem);
+            color: var(--beige-mid);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* ═══════════════════════════════════════════
+           SLIDE 10 — DEBERES DEL NOTARIO
+        ═══════════════════════════════════════════ */
+        #slide-10 {
+            background: var(--ivory-soft);
+            flex-direction: row;
+        }
+
+        .slide-10-image {
+            width: 48%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-10-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-10-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, transparent 60%, var(--ivory-soft));
+        }
+
+        .slide-10-text {
+            width: 52%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: var(--slide-padding-v) var(--slide-padding);
+        }
+
+        #slide-10 .slide-title {
+            font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        #slide-10 .slide-divider {
+            width: 40px;
+            margin-bottom: 2rem;
+        }
+
+        #slide-10 .slide-body {
+            gap: 1.4rem;
+        }
+
+        #slide-10 .slide-body li {
+            font-size: clamp(0.88rem, 1.3vw, 1rem);
+            color: var(--graphite);
+        }
+
+        /* ═══════════════════════════════════════════
+           SLIDE 11 — ATRIBUCIONES NOTARIALES
+        ═══════════════════════════════════════════ */
+        #slide-11 {
+            background: var(--charcoal-deep);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide-11-content {
+            max-width: 1020px;
+            width: 100%;
+            padding: var(--slide-padding-v) var(--slide-padding);
+        }
+
+        #slide-11 .slide-title {
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+            color: var(--ivory);
+            margin-bottom: 0.5rem;
+        }
+
+        #slide-11 .slide-divider {
+            width: 45px;
+            margin-bottom: 2.5rem;
+        }
+
+        .atribuciones-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .atribucion-item {
+            border-top: 1px solid rgba(184, 160, 126, 0.3);
+            padding-top: 1.2rem;
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .slide.active .atribucion-item:nth-child(1) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.3s;
+        }
+
+        .slide.active .atribucion-item:nth-child(2) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.45s;
+        }
+
+        .slide.active .atribucion-item:nth-child(3) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.6s;
+        }
+
+        .slide.active .atribucion-item:nth-child(4) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.75s;
+        }
+
+        .slide.active .atribucion-item:nth-child(5) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.9s;
+        }
+
+        .slide.active .atribucion-item:nth-child(6) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 1.05s;
+        }
+
+        .atribucion-item h4 {
+            font-family: var(--font-display);
+            font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+            font-weight: 600;
+            color: var(--gold-light);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .atribucion-item p {
+            font-family: var(--font-body);
+            font-size: clamp(0.75rem, 1vw, 0.85rem);
+            color: rgba(214, 207, 196, 0.6);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* ═══════════════════════════════════════════
+           SLIDE 12 — EL PROTOCOLO NOTARIAL
+        ═══════════════════════════════════════════ */
+        #slide-12 {
+            background: var(--ivory);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide-12-content {
+            max-width: 980px;
+            width: 100%;
+            padding: var(--slide-padding-v) var(--slide-padding);
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .slide-12-left {}
+
+        #slide-12 .slide-title {
+            font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        #slide-12 .slide-subtitle {
+            font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+            color: var(--slate);
+            margin-bottom: 0.5rem;
+        }
+
+        #slide-12 .slide-divider {
+            width: 45px;
+            background: var(--gold-muted);
+            margin-bottom: 2rem;
+        }
+
+        #slide-12 .slide-body {
+            gap: 1.3rem;
+        }
+
+        #slide-12 .slide-body li {
+            font-size: clamp(0.88rem, 1.2vw, 1rem);
+            color: var(--graphite);
+        }
+
+        .protocolo-doc {
+            border: 1px solid var(--beige-mid);
+            background: var(--ivory-soft);
+            padding: 2rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .slide.active .protocolo-doc {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.8s;
+        }
+
+        .protocolo-doc::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 2rem;
+            right: 2rem;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-muted), var(--gold-light), var(--gold-muted));
+        }
+
+        .protocolo-doc-header {
+            font-family: var(--font-accent);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--slate);
+            text-align: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--beige-mid);
+        }
+
+        .protocolo-doc-body {
+            font-family: var(--font-accent);
+            font-size: clamp(0.8rem, 1.1vw, 0.9rem);
+            color: var(--graphite);
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .protocolo-doc-seal {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--beige-mid);
+        }
+
+        .protocolo-doc-seal svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--gold-muted);
+            fill: none;
+            stroke-width: 1;
+            flex-shrink: 0;
+        }
+
+        .protocolo-doc-seal span {
+            font-family: var(--font-body);
+            font-size: 0.72rem;
+            color: var(--slate);
+            letter-spacing: 0.05em;
+        }
+
+        /* ═══════════════════════════════════════════
+           SLIDE 13 — ERA DIGITAL / REFORMAS 2025
+        ═══════════════════════════════════════════ */
+        #slide-13 {
+            background: var(--charcoal-deep);
+            flex-direction: row-reverse;
+        }
+
+        .slide-13-image {
+            width: 45%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-13-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-13-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to left, transparent 60%, var(--charcoal-deep));
+        }
+
+        .slide-13-text {
+            width: 55%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: var(--slide-padding-v) var(--slide-padding);
+        }
+
+        #slide-13 .slide-title {
+            font-size: clamp(1.5rem, 3.2vw, 2.4rem);
+            color: var(--ivory);
+            margin-bottom: 0.5rem;
+        }
+
+        #slide-13 .slide-subtitle {
+            font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+            color: var(--gold-light);
+            margin-bottom: 0.5rem;
+        }
+
+        #slide-13 .slide-divider {
+            width: 40px;
+            margin-bottom: 2rem;
+        }
+
+        #slide-13 .slide-body {
+            gap: 1.3rem;
+        }
+
+        #slide-13 .slide-body li {
+            font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+            color: var(--beige-mid);
+        }
+
+        /* ═══════════════════════════════════════════
+           SLIDE 14 — FIRMA ELECTRÓNICA
+        ═══════════════════════════════════════════ */
+        #slide-14 {
+            background: var(--beige-warm);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide-14-content {
+            max-width: 980px;
+            width: 100%;
+            padding: var(--slide-padding-v) var(--slide-padding);
+        }
+
+        #slide-14 .slide-title {
+            font-size: clamp(1.5rem, 3.2vw, 2.4rem);
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        #slide-14 .slide-divider {
+            width: 45px;
+            background: var(--bronze);
+            margin-bottom: 2.5rem;
+        }
+
+        .firma-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .firma-panel {
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .firma-panel.dark {
+            background: var(--charcoal-deep);
+        }
+
+        .firma-panel.light {
+            border: 1px solid var(--beige-mid);
+            background: var(--ivory-soft);
+        }
+
+        .slide.active .firma-panel:nth-child(1) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.4s;
+        }
+
+        .slide.active .firma-panel:nth-child(2) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.7s;
+        }
+
+        .firma-panel-tag {
+            font-family: var(--font-body);
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .firma-panel.dark .firma-panel-tag {
+            color: var(--gold-muted);
+        }
+
+        .firma-panel.light .firma-panel-tag {
+            color: var(--bronze);
+        }
+
+        .firma-panel h3 {
+            font-family: var(--font-display);
+            font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .firma-panel.dark h3 {
+            color: var(--ivory);
+        }
+
+        .firma-panel.light h3 {
+            color: var(--charcoal);
+        }
+
+        .firma-panel ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .firma-panel ul li {
+            font-family: var(--font-body);
+            font-size: clamp(0.8rem, 1.1vw, 0.9rem);
+            font-weight: 300;
+            line-height: 1.5;
+            padding-left: 1.2em;
+            position: relative;
+        }
+
+        .firma-panel ul li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            font-weight: 300;
+        }
+
+        .firma-panel.dark ul li,
+        .firma-panel.dark ul li::before {
+            color: var(--beige-mid);
+        }
+
+        .firma-panel.light ul li,
+        .firma-panel.light ul li::before {
+            color: var(--slate);
+        }
+
+        /* ═══════════════════════════════════════════
+           SLIDE 15 — PROTECCIÓN DE DATOS
+        ═══════════════════════════════════════════ */
+        #slide-15 {
+            background: var(--charcoal);
+            flex-direction: row;
+            align-items: stretch;
+        }
+
+        .slide-15-left {
+            width: 40%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: var(--slide-padding-v) var(--slide-padding);
+            border-right: 1px solid rgba(184, 160, 126, 0.15);
+        }
+
+        #slide-15 .slide-title {
+            font-size: clamp(1.5rem, 3.2vw, 2.4rem);
+            color: var(--ivory);
+            margin-bottom: 0.5rem;
+        }
+
+        #slide-15 .slide-subtitle {
+            font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+            color: var(--gold-light);
+            margin-bottom: 0.5rem;
+        }
+
+        #slide-15 .slide-divider {
+            width: 40px;
+            margin-bottom: 1.5rem;
+        }
+
+        #slide-15 .slide-body {
+            gap: 1.2rem;
+        }
+
+        #slide-15 .slide-body li {
+            font-size: clamp(0.82rem, 1.1vw, 0.92rem);
+            color: var(--beige-mid);
+        }
+
+        .slide-15-right {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: var(--slide-padding-v) var(--slide-padding);
+            gap: 1.2rem;
+        }
+
+        .lopdp-card {
+            padding: 1.3rem 1.5rem;
+            border: 1px solid rgba(184, 160, 126, 0.15);
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .slide.active .lopdp-card:nth-child(1) {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 0.4s;
+        }
+
+        .slide.active .lopdp-card:nth-child(2) {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 0.65s;
+        }
+
+        .slide.active .lopdp-card:nth-child(3) {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 0.9s;
+        }
+
+        .lopdp-card-icon {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            color: var(--gold-muted);
+            flex-shrink: 0;
+            line-height: 1;
+        }
+
+        .lopdp-card h4 {
+            font-family: var(--font-display);
+            font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+            font-weight: 600;
+            color: var(--gold-light);
+            margin-bottom: 0.3rem;
+        }
+
+        .lopdp-card p {
+            font-family: var(--font-body);
+            font-size: clamp(0.75rem, 1vw, 0.85rem);
+            color: var(--beige-mid);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* ═══════════════════════════════════════════
+           SLIDE 16 — ECOSISTEMA DEL MAÑANA
+        ═══════════════════════════════════════════ */
+        #slide-16 {
+            background: var(--ivory);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide-16-content {
+            max-width: 960px;
+            width: 100%;
+            padding: var(--slide-padding-v) var(--slide-padding);
+        }
+
+        #slide-16 .slide-title {
+            font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        #slide-16 .slide-divider {
+            width: 50px;
+            margin-bottom: 2.5rem;
+        }
+
+        .slide-16-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .slide-16-card {
+            padding: 2rem 1.5rem;
+            border: 1px solid var(--beige-mid);
+            background: var(--ivory-soft);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .slide.active .slide-16-card:nth-child(1) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.4s;
+        }
+
+        .slide.active .slide-16-card:nth-child(2) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.6s;
+        }
+
+        .slide.active .slide-16-card:nth-child(3) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.8s;
+        }
+
+        .slide-16-card-icon {
+            width: 28px;
+            height: 28px;
+            stroke: var(--gold-muted);
+            fill: none;
+            stroke-width: 1.2;
+        }
+
+        .slide-16-card h3 {
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 1.4vw, 1.2rem);
+            font-weight: 600;
+            color: var(--charcoal);
+            line-height: 1.3;
+        }
+
+        .slide-16-card p {
+            font-family: var(--font-body);
+            font-size: clamp(0.8rem, 1.1vw, 0.9rem);
+            font-weight: 300;
+            color: var(--slate);
+            line-height: 1.7;
+        }
+
+        .slide-16-accent-line {
+            width: 30px;
+            height: 1px;
+            background: var(--gold-muted);
+        }
+
+        /* ═══════════════════════════════════════════
+           SLIDE 17 — CONCLUSIÓN
+        ═══════════════════════════════════════════ */
+        #slide-17 {
+            background: var(--charcoal-deep);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .slide-17-content {
+            max-width: 720px;
+            width: 100%;
+            padding: var(--slide-padding-v) var(--slide-padding);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #slide-17 .slide-title {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            color: var(--gold-light);
+            margin-bottom: 1rem;
+        }
+
+        #slide-17 .slide-divider {
+            width: 50px;
+            margin-bottom: 2.5rem;
+        }
+
+        #slide-17 .slide-body {
+            gap: 1.8rem;
+            align-items: center;
+        }
+
+        #slide-17 .slide-body li {
+            font-family: var(--font-accent);
+            font-size: clamp(1rem, 1.8vw, 1.25rem);
+            color: var(--beige-mid);
+            text-align: center;
+            padding-left: 0;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        #slide-17 .slide-body li::before {
+            display: none;
+        }
+
+        #slide-17 .slide-body li:last-child {
+            font-family: var(--font-display);
+            font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+            color: var(--gold-light);
+            font-weight: 600;
+            font-style: italic;
+            margin-top: 0.5rem;
+            letter-spacing: 0.02em;
+        }
+
+        .slide-17-signature {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .slide.active .slide-17-signature { opacity: 1; transform: translateY(0); transition-delay: 1.4s; }
+
+        .slide-17-signature-line {
+            width: 40px;
+            height: 1px;
+            background: rgba(184,160,126,0.4);
+        }
+
+        .slide-17-signature-name {
+            font-family: var(--font-display);
+            font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+            font-weight: 500;
+            color: var(--gold-muted);
+            letter-spacing: 0.04em;
+        }
+
+        .slide-17-signature-title {
+            font-family: var(--font-body);
+            font-size: clamp(0.7rem, 0.9vw, 0.8rem);
+            font-weight: 300;
+            color: rgba(184,160,126,0.5);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        /* ═══════════════════════════════════════════
+           NAVIGATION
+        ═══════════════════════════════════════════ */
+        .nav-container {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            z-index: 100;
+            padding: 0.6rem 1.2rem;
+            background: rgba(26, 26, 26, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 50px;
+            border: 1px solid rgba(184, 160, 126, 0.15);
+        }
+
+        .nav-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(184, 160, 126, 0.25);
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            padding: 0;
+        }
+
+        .nav-dot.active {
+            background: var(--gold-muted);
+            transform: scale(1.35);
+        }
+
+        .nav-dot:hover {
+            background: rgba(184, 160, 126, 0.6);
+        }
+
+        .nav-counter {
+            font-family: var(--font-body);
+            font-size: 0.62rem;
+            font-weight: 400;
+            color: var(--beige-mid);
+            letter-spacing: 0.15em;
+            margin-left: 0.5rem;
+            min-width: 3.5em;
+            text-align: center;
+        }
+
+        .nav-arrow {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            width: 44px;
+            height: 44px;
+            border: 1px solid rgba(184, 160, 126, 0.2);
+            border-radius: 50%;
+            background: rgba(26, 26, 26, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .nav-arrow.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .nav-arrow:hover {
+            background: rgba(184, 160, 126, 0.15);
+            border-color: rgba(184, 160, 126, 0.4);
+        }
+
+        .nav-arrow svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--gold-muted);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        #nav-prev {
+            left: 1.5rem;
+        }
+
+        #nav-next {
+            right: 1.5rem;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold-muted), var(--gold-light));
+            z-index: 100;
+            transition: width 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        /* ═══════════════════════════════════════════
+           FULLSCREEN BUTTON
+        ═══════════════════════════════════════════ */
+        #btn-fullscreen {
+            position: fixed;
+            top: 1.2rem;
+            right: 1.5rem;
+            z-index: 200;
+            width: 38px;
+            height: 38px;
+            border: 1px solid rgba(184,160,126,0.25);
+            border-radius: 8px;
+            background: rgba(26,26,26,0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.25s, border-color 0.25s;
+        }
+        #btn-fullscreen:hover {
+            background: rgba(184,160,126,0.15);
+            border-color: rgba(184,160,126,0.5);
+        }
+        #btn-fullscreen svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--gold-muted);
+            fill: none;
+            stroke-width: 1.8;
+        }
+        /* hide the "enter" icon when already fullscreen, show "exit" */
+        #btn-fullscreen .icon-exit { display: none; }
+        :fullscreen #btn-fullscreen .icon-enter { display: none; }
+        :fullscreen #btn-fullscreen .icon-exit  { display: block; }
+        :-webkit-full-screen #btn-fullscreen .icon-enter { display: none; }
+        :-webkit-full-screen #btn-fullscreen .icon-exit  { display: block; }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE
+        ═══════════════════════════════════════════ */
+        @media (max-width: 768px) {
+
+            #slide-3,
+            #slide-10,
+            #slide-13 {
+                flex-direction: column;
+            }
+
+            .slide-3-image,
+            .slide-10-image,
+            .slide-13-image {
+                width: 100%;
+                height: 35%;
+            }
+
+            .slide-3-text,
+            .slide-10-text,
+            .slide-13-text {
+                width: 100%;
+                height: 65%;
+                padding: 1.5rem;
+            }
+
+            #slide-4 {
+                flex-direction: column;
+            }
+
+            .slide-4-portrait {
+                width: 100%;
+                height: 45%;
+            }
+
+            .slide-4-text {
+                width: 100%;
+                padding: 1.5rem;
+            }
+
+            .agenda-grid,
+            .cambios-grid,
+            .atribuciones-grid,
+            .slide-16-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .prohibiciones-grid,
+            .firma-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .slide-7-content,
+            .slide-12-content {
+                grid-template-columns: 1fr;
+            }
+
+            #slide-8 {
+                flex-direction: column;
+            }
+
+            .slide-8-left {
+                width: 100%;
+                height: auto;
+                padding: 2rem;
+            }
+
+            .slide-8-right {
+                width: 100%;
+            }
+
+            #slide-9 {
+                flex-direction: column;
+            }
+
+            .slide-9-accent {
+                width: 100%;
+                height: 6px;
+            }
+
+            #slide-15 {
+                flex-direction: column;
+            }
+
+            .slide-15-left,
+            .slide-15-right {
+                width: 100%;
+            }
+
+            .nav-arrow {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="progress-bar" id="progressBar" role="progressbar"></div>
+
+    <!-- Fullscreen toggle -->
+    <button id="btn-fullscreen" title="Pantalla completa (F)">
+        <!-- enter fullscreen -->
+        <svg class="icon-enter" viewBox="0 0 24 24">
+            <polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/>
+            <line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>
+        </svg>
+        <!-- exit fullscreen -->
+        <svg class="icon-exit" viewBox="0 0 24 24">
+            <polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/>
+            <line x1="10" y1="14" x2="3" y2="21"/><line x1="21" y1="3" x2="14" y2="10"/>
+        </svg>
+    </button>
+
+    <main id="presentation">
+
+        <!-- ══════════ SLIDE 1: PORTADA ══════════ -->
+        <section class="slide active" id="slide-1" aria-label="Portada">
+            <div class="slide-1-content">
+                <h1 class="slide-title">El Custodio de la<br>Certeza Jurídica</h1>
+                <p class="slide-subtitle">Evolución, reformas al 2025 y el futuro inalterable de la Ley Notarial.</p>
+                <div class="slide-divider"></div>
+                <div class="slide-meta">
+                    <span>Diplomado en Derecho Notarial y Registral</span>
+                    <span>Colegio de Abogados de Pichincha · 17 de junio de 2026</span>
+                    <span>Dr. Jorge Isaac Valarezo Guerrero — Notario 54° del Cantón Quito</span>
+                </div>
+            </div>
+            <div class="slide-number-accent">I</div>
+        </section>
+
+        <!-- ══════════ SLIDE 2: AGENDA ══════════ -->
+        <section class="slide" id="slide-2" aria-label="Agenda de la Ponencia">
+            <div class="slide-2-content">
+                <span class="slide-label">Hoja de Ruta</span>
+                <h2 class="slide-title">Agenda de la Ponencia</h2>
+                <div class="slide-divider" style="width:45px;margin-bottom:2.5rem;"></div>
+                <div class="agenda-grid">
+                    <div class="agenda-block">
+                        <div class="agenda-number">01</div>
+                        <h3>Historia &amp; Génesis</h3>
+                        <p>Del escribano colonial a la Ley Notarial de 1966. El momento fundacional que lo cambió todo.
+                        </p>
+                    </div>
+                    <div class="agenda-block">
+                        <div class="agenda-number">02</div>
+                        <h3>Reformas Constitucionales</h3>
+                        <p>2008 y el COFJ. De testigo pasivo a operador activo de justicia preventiva.</p>
+                    </div>
+                    <div class="agenda-block">
+                        <div class="agenda-number">03</div>
+                        <h3>Requisitos, Deberes &amp; Atribuciones</h3>
+                        <p>El marco legal vigente: quién puede ser notario, qué debe hacer y hasta dónde llega su
+                            potestad.</p>
+                    </div>
+                    <div class="agenda-block">
+                        <div class="agenda-number">04</div>
+                        <h3>Era Digital al 2025</h3>
+                        <p>Firma electrónica, protocolos digitales, protección de datos y el ecosistema notarial del
+                            mañana.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════ SLIDE 3: ESCRIBANOS ══════════ -->
+        <section class="slide" id="slide-3" aria-label="La Época de los Escribanos">
+            <div class="slide-3-image">
+                <img src="assets/inkwell_manuscript.png" alt="Manuscrito antiguo con tintero de plata" loading="lazy">
+            </div>
+            <div class="slide-3-text">
+                <span class="slide-label">El Pasado · 1534</span>
+                <h2 class="slide-title">Antes de la Ley:<br>La Época de los Escribanos</h2>
+                <div class="slide-divider" style="width:40px;margin-bottom:2rem;"></div>
+                <ul class="slide-body">
+                    <li><strong>1534:</strong> Gonzalo Díaz y la fundación de Quito. El primer escribano en territorio
+                        ecuatoriano.</li>
+                    <li><strong>Herencia Indiana:</strong> Transcripción manual bajo las Leyes de Indias. Sin cuerpo
+                        legal propio.</li>
+                    <li><strong>El Amanuense:</strong> Fedatario limitado a la transcripción, sin investidura
+                        institucional unificada.</li>
+                    <li><strong>El Problema:</strong> Dispersión legal, falta de protocolo uniforme y nula garantía de
+                        certeza jurídica.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ══════════ SLIDE 4: CLEMENTE YEROVI — HERO ══════════ -->
+        <section class="slide" id="slide-4" aria-label="Clemente Yerovi Indaburu y el Decreto 1404">
+            <div class="slide-4-portrait">
+                <img src="assets/clemente_yerovi.png" alt="Clemente Yerovi Indaburu, Presidente de Ecuador 1966"
+                    loading="lazy">
+                <div class="slide-4-portrait-caption">
+                    <span>Clemente Yerovi Indaburu · 1904–1981</span>
+                </div>
+            </div>
+            <div class="slide-4-text">
+                <span class="slide-label">El Punto de Inflexión · 1966</span>
+                <h2 class="slide-title">Clemente Yerovi<br>Indaburu</h2>
+                <p class="slide-subtitle">Presidente Interino del Ecuador, marzo–noviembre 1966</p>
+                <div class="slide-divider"></div>
+                <ul class="slide-body">
+                    <li><strong>Fin de la Dispersión:</strong> Unifica bajo un solo cuerpo legal cuatro siglos de
+                        normativa fragmentada.</li>
+                    <li><strong>El Notario como Institución:</strong> El Estado eleva la profesión de oficio secundario
+                        a pilar jurídico.</li>
+                    <li><strong>Protocolo Unificado:</strong> Nace el sistema de matrices y el protocolo que blindó el
+                        comercio y el patrimonio por medio siglo.</li>
+                </ul>
+                <div class="decreto-card">
+                    <div class="decreto-card-header">Registro Oficial · República del Ecuador</div>
+                    <div class="decreto-card-title">Decreto Supremo N.° 1404</div>
+                    <div class="decreto-card-body">«Expídese la Ley Notarial que regula el ejercicio de la función
+                        notarial en el Ecuador, estableciendo las atribuciones, deberes y responsabilidades de los
+                        Notarios de la República...»</div>
+                </div>
+                <div class="year-stamp">1966</div>
+            </div>
+        </section>
+
+        <!-- ══════════ SLIDE 5: LO QUE CAMBIÓ LA LEY 1404 ══════════ -->
+        <section class="slide" id="slide-5" aria-label="Lo que cambió la Ley Notarial 1404">
+            <div class="slide-5-content">
+                <span class="slide-label">Decreto Supremo 1404 · Impacto</span>
+                <h2 class="slide-title">Lo que lo Cambió Todo</h2>
+                <div class="slide-divider"></div>
+                <div class="cambios-grid">
+                    <div class="cambio-item">
+                        <div class="cambio-numero">01</div>
+                        <h3>Unificación Jurídica</h3>
+                        <div class="cambio-divider"></div>
+                        <p>Un solo cuerpo legal derogó siglos de normativa dispersa entre el Código Civil, las Leyes de
+                            Indias y decretos aislados.</p>
+                    </div>
+                    <div class="cambio-item">
+                        <div class="cambio-numero">02</div>
+                        <h3>Investidura Institucional</h3>
+                        <div class="cambio-divider"></div>
+                        <p>El Notario pasa a ser nombrado por el Estado. Nace la figura del Notario como funcionario
+                            público independiente.</p>
+                    </div>
+                    <div class="cambio-item">
+                        <div class="cambio-numero">03</div>
+                        <h3>Fe Pública Garantizada</h3>
+                        <div class="cambio-divider"></div>
+                        <p>La firma y el sello notarial pasan a tener fuerza ejecutiva. Los actos notariales son
+                            inimpugnables salvo juicio de nulidad.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════ SLIDE 6: LÍNEA DEL TIEMPO ══════════ -->
+        <section class="slide" id="slide-6" aria-label="Línea del Tiempo de Reformas">
+            <div class="slide-6-content">
+                <span class="slide-label">Evolución Histórica</span>
+                <h2 class="slide-title">Seis Décadas de Reformas</h2>
+                <div class="slide-divider"></div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1966</div>
+                        <div class="timeline-dot major"></div>
+                        <div class="timeline-text">
+                            <h4>Decreto Supremo 1404 — La Ley Notarial</h4>
+                            <p>Yerovi crea el sistema notarial unificado ecuatoriano.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1978</div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-text">
+                            <h4>Primera Gran Reforma</h4>
+                            <p>Ampliación de competencias. Nuevos actos sujetos a escritura pública.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2006</div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-text">
+                            <h4>Reforma de Competencias Extrajudiciales</h4>
+                            <p>Se trasladan al notariado funciones de descongestión judicial: posesiones efectivas y
+                                disoluciones.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2008</div>
+                        <div class="timeline-dot major"></div>
+                        <div class="timeline-text">
+                            <h4>Constitución de Montecristi + COFJ</h4>
+                            <p>El notario como operador de justicia. Divorcios, tutelas, reconocimientos. El mayor salto
+                                competencial en 40 años.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2015</div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-text">
+                            <h4>Código Orgánico General de Procesos (COGEP)</h4>
+                            <p>Nuevas atribuciones en mediación prejudicial y actuaciones sumarísimas.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2021–25</div>
+                        <div class="timeline-dot major"></div>
+                        <div class="timeline-text">
+                            <h4>Era Digital: LOPDP + Firma Electrónica</h4>
+                            <p>Desmaterialización del protocolo. Comparecencia telemática. Protección de datos
+                                personales en actos notariales.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════ SLIDE 7: DE TESTIGO A JUEZ DE PAZ ══════════ -->
+        <section class="slide" id="slide-7" aria-label="De Testigo a Juez de Paz Preventivo">
+            <div class="slide-7-content">
+                <div class="slide-7-left">
+                    <span class="slide-label">Constitución 2008 · COFJ</span>
+                    <h2 class="slide-title">De Testigo a Juez<br>de Paz Preventivo</h2>
+                    <p class="slide-subtitle">El mayor salto competencial en la historia del notariado ecuatoriano</p>
+                    <div class="slide-divider"></div>
+                    <ul class="slide-body">
+                        <li><strong>Sistema saturado:</strong> Los juzgados civiles colapsan. El Estado confía en el
+                            notariado.</li>
+                        <li><strong>Nuevas competencias:</strong> Divorcios, posesiones efectivas, disoluciones
+                            conyugales, tutelas.</li>
+                        <li><strong>El Arquitecto de la Paz:</strong> El notario ya no espera el conflicto — lo
+                            previene.</li>
+                    </ul>
+                </div>
+                <div class="slide-7-quote-block">
+                    <blockquote>
+                        «El Notario es el primer juez de la voluntad de las partes. Su función es la justicia
+                        preventiva: evitar el conflicto antes de que nazca.»
+                    </blockquote>
+                    <cite>Doctrina Notarial Latinoamericana</cite>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════ SLIDE 8: REQUISITOS PARA SER NOTARIO ══════════ -->
+        <section class="slide" id="slide-8" aria-label="Requisitos para ser Notario">
+            <div class="slide-8-left">
+                <span class="slide-label">Art. 6 · Ley Notarial</span>
+                <h2 class="slide-title">Requisitos para ser Notario</h2>
+                <p class="slide-subtitle">La investidura más exigente del derecho ecuatoriano</p>
+                <div class="slide-divider"></div>
+            </div>
+            <div class="slide-8-right">
+                <ul class="requisitos-list">
+                    <li class="requisito-item">
+                        <div class="requisito-check"><svg viewBox="0 0 12 12">
+                                <polyline points="2,6 5,9 10,3" />
+                            </svg></div>
+                        <div class="requisito-text">
+                            <h4>Título de Abogado</h4>
+                            <p>Conferido por universidad reconocida por el SENESCYT. Habilitación profesional vigente.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="requisito-item">
+                        <div class="requisito-check"><svg viewBox="0 0 12 12">
+                                <polyline points="2,6 5,9 10,3" />
+                            </svg></div>
+                        <div class="requisito-text">
+                            <h4>Ciudadanía Ecuatoriana</h4>
+                            <p>Nacido en Ecuador o naturalizado. Goce pleno de derechos políticos y civiles.</p>
+                        </div>
+                    </li>
+                    <li class="requisito-item">
+                        <div class="requisito-check"><svg viewBox="0 0 12 12">
+                                <polyline points="2,6 5,9 10,3" />
+                            </svg></div>
+                        <div class="requisito-text">
+                            <h4>Concurso de Méritos y Oposición</h4>
+                            <p>Proceso ante el Consejo de la Judicatura. La notaría no se compra ni se hereda — se gana.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="requisito-item">
+                        <div class="requisito-check"><svg viewBox="0 0 12 12">
+                                <polyline points="2,6 5,9 10,3" />
+                            </svg></div>
+                        <div class="requisito-text">
+                            <h4>Probidad e Idoneidad</h4>
+                            <p>Sin condenas penales, sin sanciones disciplinarias. El carácter es el primer requisito.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="requisito-item">
+                        <div class="requisito-check"><svg viewBox="0 0 12 12">
+                                <polyline points="2,6 5,9 10,3" />
+                            </svg></div>
+                        <div class="requisito-text">
+                            <h4>Experiencia Profesional</h4>
+                            <p>Mínimo de años de práctica jurídica acreditada antes del concurso.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ══════════ SLIDE 9: PROHIBICIONES ══════════ -->
+        <section class="slide" id="slide-9" aria-label="Prohibiciones del Notario Art. 14">
+            <div class="slide-9-accent"></div>
+            <div class="slide-9-text">
+                <span class="slide-label">Art. 14 · Ley Notarial</span>
+                <h2 class="slide-title">Prohibiciones:<br>El Escudo de la Imparcialidad</h2>
+                <p class="slide-subtitle">Lo que el Notario nunca puede hacer, por ningún motivo</p>
+                <div class="slide-divider" style="width:45px;margin-bottom:2rem;"></div>
+                <div class="prohibiciones-grid">
+                    <div class="prohibicion-card">
+                        <h4>No al Libre Ejercicio</h4>
+                        <p>El cargo notarial es incompatible con el ejercicio independiente de la abogacía. No puede ser
+                            abogado de ninguna parte.</p>
+                    </div>
+                    <div class="prohibicion-card">
+                        <h4>No al Interés Personal</h4>
+                        <p>Está prohibido intervenir en actos o contratos donde el notario, su cónyuge o parientes
+                            tengan interés directo.</p>
+                    </div>
+                    <div class="prohibicion-card">
+                        <h4>No a Cargos Incompatibles</h4>
+                        <p>No puede desempeñar simultáneamente cargos de elección popular, funciones ejecutivas o
+                            judiciales.</p>
+                    </div>
+                    <div class="prohibicion-card">
+                        <h4>No a la Delegación Total</h4>
+                        <p>La fe pública es personal e indelegable. El notario no puede firmar en blanco ni autorizar
+                            sin presencia real.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════ SLIDE 10: DEBERES DEL NOTARIO ══════════ -->
+        <section class="slide" id="slide-10" aria-label="Deberes del Notario">
+            <div class="slide-10-image">
+                <img src="assets/signing_document.png" alt="Manos firmando un documento legal" loading="lazy">
+            </div>
+            <div class="slide-10-text">
+                <span class="slide-label">Deberes · Ley Notarial</span>
+                <h2 class="slide-title">Los Deberes del<br>Fedatario</h2>
+                <div class="slide-divider" style="width:40px;margin-bottom:2rem;"></div>
+                <ul class="slide-body">
+                    <li><strong>Asesorar con Imparcialidad:</strong> Advertir a las partes sobre las consecuencias de
+                        sus actos. La lealtad es solo con la Ley.</li>
+                    <li><strong>Identificar a los Comparecientes:</strong> Verificar identidad, capacidad y libertad.
+                        Sin coacción, sin temor reverencial.</li>
+                    <li><strong>Redacción Sin Ambigüedad:</strong> Una escritura impecable es un muro contra el litigio
+                        futuro.</li>
+                    <li><strong>Guardar el Secreto Notarial:</strong> Los actos no inscritos en el registro son
+                        reservados hasta su divulgación legal.</li>
+                    <li><strong>Conservar el Protocolo:</strong> El archivo notarial es patrimonio público.
+                        Responsabilidad permanente.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ══════════ SLIDE 11: ATRIBUCIONES ══════════ -->
+        <section class="slide" id="slide-11" aria-label="Atribuciones Notariales">
+            <div class="slide-11-content">
+                <span class="slide-label">Art. 18 · Ley Notarial</span>
+                <h2 class="slide-title">Atribuciones del Notario</h2>
+                <div class="slide-divider" style="width:45px;margin-bottom:2.5rem;"></div>
+                <div class="atribuciones-grid">
+                    <div class="atribucion-item">
+                        <h4>Escrituras Públicas</h4>
+                        <p>Compraventas, hipotecas, donaciones, mandatos, fideicomisos y todo acto que requiere
+                            solemnidad legal.</p>
+                    </div>
+                    <div class="atribucion-item">
+                        <h4>Divorcios por Mutuo Consentimiento</h4>
+                        <p>Sin hijos menores ni bienes en disputa. El notario como alternativa ágil al proceso judicial.
+                        </p>
+                    </div>
+                    <div class="atribucion-item">
+                        <h4>Posesiones Efectivas</h4>
+                        <p>Trámite de herencia cuando no hay juicio. Agilidad y certeza para los herederos.</p>
+                    </div>
+                    <div class="atribucion-item">
+                        <h4>Declaraciones Juramentadas</h4>
+                        <p>Instrumento ejecutivo inmediato para constatar hechos y eximir responsabilidades legales.</p>
+                    </div>
+                    <div class="atribucion-item">
+                        <h4>Disolución Sociedad Conyugal</h4>
+                        <p>Liquidación patrimonial de forma voluntaria, sin intervención judicial.</p>
+                    </div>
+                    <div class="atribucion-item">
+                        <h4>Reconocimiento de Firmas y Documentos</h4>
+                        <p>Autenticación de firmas, copias certificadas, legalizaciones e instrumentos privados.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════ SLIDE 12: EL PROTOCOLO NOTARIAL ══════════ -->
+        <section class="slide" id="slide-12" aria-label="El Protocolo Notarial">
+            <div class="slide-12-content">
+                <div class="slide-12-left">
+                    <span class="slide-label">La Columna Vertebral</span>
+                    <h2 class="slide-title">El Protocolo Notarial</h2>
+                    <p class="slide-subtitle">El archivo que sostiene la certeza jurídica del Ecuador</p>
+                    <div class="slide-divider"></div>
+                    <ul class="slide-body">
+                        <li><strong>Libro Físico y Digital:</strong> Registro cronológico e inalterable de todos los
+                            actos autorizados.</li>
+                        <li><strong>La Matriz Original:</strong> Permanece en la notaría. Las copias certificadas son
+                            las que circulan.</li>
+                        <li><strong>Acceso Público Regulado:</strong> Cualquier persona puede solicitar copias. La
+                            publicidad notarial es principio de fe pública.</li>
+                        <li><strong>Custodia Permanente:</strong> Al finalizar el cargo, el protocolo pasa al Archivo
+                            Nacional o a otra notaría designada.</li>
+                    </ul>
+                </div>
+                <div class="protocolo-doc">
+                    <div class="protocolo-doc-header">República del Ecuador · Notaría 54ª del Cantón Quito</div>
+                    <div class="protocolo-doc-body">
+                        «En la Ciudad de San Francisco de Quito, ante mí, Notario, comparece con plena capacidad,
+                        libertad y conocimiento, a la celebración de la presente escritura...»
+                        <br><br>
+                        «...leída que fue íntegramente la misma por los comparecientes, aquellos se ratifican en todas y
+                        cada una de sus partes; y, para constancia, firman conmigo, en unidad de acto.»
+                        <br><br>
+                        <strong style="font-style:normal;color:#2C2C2C;">QUEDANDO INCORPORADA AL PROTOCOLO DE ESTA
+                            NOTARÍA — DE TODO LO CUAL DOY FE.</strong>
+                    </div>
+                    <div class="protocolo-doc-seal">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 6v6l4 2" />
+                        </svg>
+                        <span>Firma, sello y rúbrica notarial — fuerza ejecutiva inmediata</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════ SLIDE 13: ERA DIGITAL / REFORMAS 2025 ══════════ -->
+        <section class="slide" id="slide-13" aria-label="Era Digital y Reformas al 2025">
+            <div class="slide-13-image">
+                <img src="assets/digital_flow.png" alt="Flujo de datos abstracto en dorado" loading="lazy">
+            </div>
+            <div class="slide-13-text">
+                <span class="slide-label">Reformas hacia el 2025</span>
+                <h2 class="slide-title">La Era Digital</h2>
+                <p class="slide-subtitle">La Desmaterialización del Protocolo</p>
+                <div class="slide-divider"></div>
+                <ul class="slide-body">
+                    <li><strong>La Matriz Digital:</strong> Transición del protocolo físico al archivo digital
+                        interoperable con el Estado.</li>
+                    <li><strong>Identidad Telemática:</strong> Firmas electrónicas y comparecencia a través de
+                        videollamadas certificadas.</li>
+                    <li><strong>Interoperabilidad:</strong> Conexión con el Registro Civil, ANT, Superintendencias y SRI
+                        en tiempo real.</li>
+                    <li><strong>Solemnidad Intacta:</strong> La tecnología es el vehículo. El criterio del Notario sigue
+                        siendo irremplazable.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ══════════ SLIDE 14: FIRMA ELECTRÓNICA ══════════ -->
+        <section class="slide" id="slide-14" aria-label="Firma Electrónica y Comparecencia Telemática">
+            <div class="slide-14-content">
+                <span class="slide-label">Derecho Notarial Digital</span>
+                <h2 class="slide-title">Firma Electrónica y<br>Comparecencia Telemática</h2>
+                <div class="slide-divider"></div>
+                <div class="firma-grid">
+                    <div class="firma-panel dark">
+                        <div class="firma-panel-tag">Lo que permite</div>
+                        <h3>Actos sin Presencia Física</h3>
+                        <ul>
+                            <li>Comparecencia por videoconferencia certificada y grabada.</li>
+                            <li>Firma electrónica cualificada con la misma validez legal que la firma manuscrita.</li>
+                            <li>Envío y recepción de minutas a través de plataformas seguras del Estado.</li>
+                            <li>Copias certificadas digitales con código de verificación oficial.</li>
+                        </ul>
+                    </div>
+                    <div class="firma-panel light">
+                        <div class="firma-panel-tag">Lo que no cambia</div>
+                        <h3>La Esencia Notarial</h3>
+                        <ul>
+                            <li>El Notario debe identificar y evaluar la capacidad del compareciente.</li>
+                            <li>La voluntad libre y consciente sigue siendo el requisito fundamental.</li>
+                            <li>El asesoramiento previo e imparcial es un deber irrenunciable.</li>
+                            <li>La responsabilidad civil y penal del Notario es la misma en actos digitales.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════ SLIDE 15: PROTECCIÓN DE DATOS ══════════ -->
+        <section class="slide" id="slide-15" aria-label="Protección de Datos Personales">
+            <div class="slide-15-left">
+                <span class="slide-label">LOPDP · 2021</span>
+                <h2 class="slide-title">Protección de<br>Datos en Actos Notariales</h2>
+                <p class="slide-subtitle">La Ley Orgánica de Protección de Datos Personales y su impacto directo en la
+                    función notarial</p>
+                <div class="slide-divider"></div>
+                <ul class="slide-body">
+                    <li>El notario es <strong>responsable del tratamiento</strong> de datos personales que constan en
+                        sus protocolos.</li>
+                    <li>Obligación de <strong>consentimiento expreso</strong> del compareciente para datos sensibles.
+                    </li>
+                    <li>El principio de <strong>publicidad notarial</strong> coexiste con el derecho a la privacidad.
+                    </li>
+                </ul>
+            </div>
+            <div class="slide-15-right">
+                <div class="lopdp-card">
+                    <div class="lopdp-card-icon">§</div>
+                    <div>
+                        <h4>Datos de Categoría Especial</h4>
+                        <p>Etnia, salud, biometría, orientación sexual, pasado judicial. El notario los recibe bajo
+                            consentimiento expreso y principio de necesidad.</p>
+                    </div>
+                </div>
+                <div class="lopdp-card">
+                    <div class="lopdp-card-icon">⚖</div>
+                    <div>
+                        <h4>Transferencia de Datos</h4>
+                        <p>Las copias certificadas implican transferencia de datos a terceros. El notario debe
+                            documentar la finalidad del solicitante.</p>
+                    </div>
+                </div>
+                <div class="lopdp-card">
+                    <div class="lopdp-card-icon">🔒</div>
+                    <div>
+                        <h4>Archivo Digital y Seguridad</h4>
+                        <p>Los protocolos digitales exigen cifrado, control de acceso y auditoría. El Notario responde
+                            por brechas de seguridad en su archivo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════ SLIDE 16: ECOSISTEMA DEL MAÑANA ══════════ -->
+        <section class="slide" id="slide-16" aria-label="El Ecosistema Notarial del Mañana">
+            <div class="slide-16-content">
+                <span class="slide-label">El Mañana</span>
+                <h2 class="slide-title">El Ecosistema Notarial<br>del Mañana</h2>
+                <div class="slide-divider"></div>
+                <div class="slide-16-grid">
+                    <div class="slide-16-card">
+                        <svg class="slide-16-card-icon" viewBox="0 0 24 24">
+                            <rect x="2" y="3" width="20" height="14" rx="2" />
+                            <line x1="8" y1="21" x2="16" y2="21" />
+                            <line x1="12" y1="17" x2="12" y2="21" />
+                            <circle cx="12" cy="10" r="2" />
+                        </svg>
+                        <div class="slide-16-accent-line"></div>
+                        <h3>Datos a Gran Escala</h3>
+                        <p>La función notarial del futuro asimila volúmenes masivos de información sin comprometer
+                            seguridad ni solemnidad.</p>
+                    </div>
+                    <div class="slide-16-card">
+                        <svg class="slide-16-card-icon" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                            <path d="M2 17l10 5 10-5" />
+                            <path d="M2 12l10 5 10-5" />
+                        </svg>
+                        <div class="slide-16-accent-line"></div>
+                        <h3>Copiloto Operativo</h3>
+                        <p>Software especializado que asiste al fedatario en verificación cruzada con bases de datos
+                            estatales en tiempo real.</p>
+                    </div>
+                    <div class="slide-16-card">
+                        <svg class="slide-16-card-icon" viewBox="0 0 24 24">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                            <polyline points="22 4 12 14.01 9 11.01" />
+                        </svg>
+                        <div class="slide-16-accent-line"></div>
+                        <h3>Margen de Error Cero</h3>
+                        <p>La tecnología mitiga el error humano en la forma. El Notario enfoca su intelecto en el
+                            análisis jurídico de fondo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════ SLIDE 17: CONCLUSIÓN ══════════ -->
+        <section class="slide" id="slide-17" aria-label="Conclusión">
+            <div class="slide-17-content">
+                <h2 class="slide-title">El Legado Inalterable</h2>
+                <div class="slide-divider"></div>
+                <ul class="slide-body">
+                    <li>Las herramientas evolucionan. Del manuscrito colonial al protocolo digital, de la pluma al algoritmo.</li>
+                    <li>Pero ningún sistema reemplaza al ser humano íntegro que se para frente a las partes, lee su voluntad y la convierte en certeza que dura para siempre.</li>
+                    <li>La firma del Notario no es un trámite. Es una promesa al Estado, a la sociedad y a la historia.</li>
+                </ul>
+                <div class="slide-17-signature">
+                    <div class="slide-17-signature-line"></div>
+                    <div class="slide-17-signature-name">Dr. Jorge Isaac Valarezo Guerrero</div>
+                    <div class="slide-17-signature-title">Notario 54° del Cantón Quito</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Navigation Arrows -->
+    <button class="nav-arrow" id="nav-prev" aria-label="Diapositiva anterior">
+        <svg viewBox="0 0 24 24">
+            <polyline points="15 18 9 12 15 6" />
+        </svg>
+    </button>
+    <button class="nav-arrow visible" id="nav-next" aria-label="Siguiente diapositiva">
+        <svg viewBox="0 0 24 24">
+            <polyline points="9 18 15 12 9 6" />
+        </svg>
+    </button>
+
+    <!-- Navigation Dots -->
+    <nav class="nav-container" aria-label="Navegación de diapositivas">
+        <button class="nav-dot active" data-slide="0" aria-label="Diapositiva 1"></button>
+        <button class="nav-dot" data-slide="1" aria-label="Diapositiva 2"></button>
+        <button class="nav-dot" data-slide="2" aria-label="Diapositiva 3"></button>
+        <button class="nav-dot" data-slide="3" aria-label="Diapositiva 4"></button>
+        <button class="nav-dot" data-slide="4" aria-label="Diapositiva 5"></button>
+        <button class="nav-dot" data-slide="5" aria-label="Diapositiva 6"></button>
+        <button class="nav-dot" data-slide="6" aria-label="Diapositiva 7"></button>
+        <button class="nav-dot" data-slide="7" aria-label="Diapositiva 8"></button>
+        <button class="nav-dot" data-slide="8" aria-label="Diapositiva 9"></button>
+        <button class="nav-dot" data-slide="9" aria-label="Diapositiva 10"></button>
+        <button class="nav-dot" data-slide="10" aria-label="Diapositiva 11"></button>
+        <button class="nav-dot" data-slide="11" aria-label="Diapositiva 12"></button>
+        <button class="nav-dot" data-slide="12" aria-label="Diapositiva 13"></button>
+        <button class="nav-dot" data-slide="13" aria-label="Diapositiva 14"></button>
+        <button class="nav-dot" data-slide="14" aria-label="Diapositiva 15"></button>
+        <button class="nav-dot" data-slide="15" aria-label="Diapositiva 16"></button>
+        <button class="nav-dot" data-slide="16" aria-label="Diapositiva 17"></button>
+        <span class="nav-counter" id="navCounter">1 / 17</span>
+    </nav>
+
+    <script>
+        (() => {
+            'use strict';
+
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.nav-dot');
+            const counter = document.getElementById('navCounter');
+            const progress = document.getElementById('progressBar');
+            const prevBtn = document.getElementById('nav-prev');
+            const nextBtn = document.getElementById('nav-next');
+            const total = slides.length;
+            let current = 0;
+            let isAnimating = false;
+
+            function goTo(index) {
+                if (index < 0 || index >= total || index === current || isAnimating) return;
+                isAnimating = true;
+
+                slides[current].classList.remove('active');
+                dots[current].classList.remove('active');
+
+                current = index;
+
+                slides[current].classList.add('active');
+                dots[current].classList.add('active');
+
+                counter.textContent = `${current + 1} / ${total}`;
+                progress.style.width = `${((current + 1) / total) * 100}%`;
+
+                prevBtn.classList.toggle('visible', current > 0);
+                nextBtn.classList.toggle('visible', current < total - 1);
+
+                setTimeout(() => { isAnimating = false; }, 900);
+            }
+
+            function next() { goTo(current + 1); }
+            function prev() { goTo(current - 1); }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); next(); }
+                if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prev(); }
+                if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+                if (e.key === 'End') { e.preventDefault(); goTo(total - 1); }
+            });
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => goTo(parseInt(dot.dataset.slide)));
+            });
+
+            prevBtn.addEventListener('click', prev);
+            nextBtn.addEventListener('click', next);
+
+            let touchStartX = 0, touchStartY = 0;
+            document.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                touchStartY = e.changedTouches[0].screenY;
+            }, { passive: true });
+
+            document.addEventListener('touchend', (e) => {
+                const dx = e.changedTouches[0].screenX - touchStartX;
+                const dy = e.changedTouches[0].screenY - touchStartY;
+                if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) { dx < 0 ? next() : prev(); }
+            }, { passive: true });
+
+            let wheelTimeout;
+            document.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                clearTimeout(wheelTimeout);
+                wheelTimeout = setTimeout(() => { e.deltaY > 0 ? next() : prev(); }, 60);
+            }, { passive: false });
+
+            progress.style.width = `${(1 / total) * 100}%`;
+            prevBtn.classList.remove('visible');
+
+            // Fullscreen
+            const fsBtn = document.getElementById('btn-fullscreen');
+            function toggleFullscreen() {
+                if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+                    (document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen).call(document.documentElement);
+                } else {
+                    (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+                }
+            }
+            fsBtn.addEventListener('click', toggleFullscreen);
+            document.addEventListener('keydown', (e) => { if (e.key === 'f' || e.key === 'F') toggleFullscreen(); });
+        })();
+    </script>
+
+</body>
+
+</html>
