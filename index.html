@@ -76,14 +76,26 @@
             display: flex;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.9s cubic-bezier(0.25, 0.1, 0.25, 1), visibility 0s linear 0.9s;
+            transform: scale(1.04) translateY(6px);
+            filter: blur(6px);
+            transition:
+                opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+                visibility 0s linear 0.85s;
             overflow: hidden;
         }
 
         .slide.active {
             opacity: 1;
             visibility: visible;
-            transition: opacity 0.9s cubic-bezier(0.25, 0.1, 0.25, 1), visibility 0s linear 0s;
+            transform: scale(1) translateY(0);
+            filter: blur(0);
+            transition:
+                opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+                visibility 0s linear 0s;
             z-index: 2;
         }
 
@@ -1474,19 +1486,124 @@
             height: 100%;
             position: relative;
             overflow: hidden;
+            background: var(--charcoal-deep);
         }
 
-        .slide-13-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
+        /* gradient fade to text side */
         .slide-13-image::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to left, transparent 60%, var(--charcoal-deep));
+            background: linear-gradient(to left, transparent 55%, var(--charcoal-deep));
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* ── Animated digital viz ─────────────────── */
+        .dv-wrap {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        /* scrolling grid */
+        .dv-grid {
+            position: absolute;
+            inset: -40px;
+            background-image:
+                linear-gradient(rgba(184,160,126,0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(184,160,126,0.07) 1px, transparent 1px);
+            background-size: 44px 44px;
+            animation: dv-grid-move 18s linear infinite;
+        }
+
+        @keyframes dv-grid-move {
+            0%   { transform: translate(0, 0); }
+            100% { transform: translate(44px, 44px); }
+        }
+
+        /* flowing diagonal beams */
+        .dv-beam {
+            position: absolute;
+            left: -60%;
+            width: 220%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(184,160,126,0.55) 40%, rgba(212,197,169,0.9) 50%, rgba(184,160,126,0.55) 60%, transparent 100%);
+            animation: dv-beam-flow linear infinite;
+            transform-origin: left center;
+        }
+
+        .dv-beam:nth-child(1) { top: 18%; transform: rotate(-22deg); animation-duration: 5.5s; animation-delay: 0s; }
+        .dv-beam:nth-child(2) { top: 38%; transform: rotate(-18deg); animation-duration: 7s;   animation-delay: -2s; }
+        .dv-beam:nth-child(3) { top: 56%; transform: rotate(-25deg); animation-duration: 6s;   animation-delay: -4s; }
+        .dv-beam:nth-child(4) { top: 73%; transform: rotate(-20deg); animation-duration: 8s;   animation-delay: -1s; }
+        .dv-beam:nth-child(5) { top: 88%; transform: rotate(-15deg); animation-duration: 6.5s; animation-delay: -3s; }
+
+        @keyframes dv-beam-flow {
+            0%   { transform: rotate(var(--r, -20deg)) translateX(-30%); opacity: 0; }
+            10%  { opacity: 1; }
+            85%  { opacity: 1; }
+            100% { transform: rotate(var(--r, -20deg)) translateX(60%); opacity: 0; }
+        }
+
+        /* pulse nodes */
+        .dv-node {
+            position: absolute;
+            border-radius: 50%;
+            animation: dv-pulse ease-in-out infinite;
+        }
+
+        .dv-node::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 1px solid rgba(184,160,126,0.3);
+            animation: dv-ring 3s ease-out infinite;
+        }
+
+        @keyframes dv-pulse {
+            0%, 100% { transform: scale(1);   opacity: 0.7; }
+            50%       { transform: scale(1.35); opacity: 1; }
+        }
+
+        @keyframes dv-ring {
+            0%   { transform: scale(1);   opacity: 0.6; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+
+        .dv-node:nth-child(1) { width:8px;  height:8px;  top:22%; left:30%; background:var(--gold-light);  animation-duration:3.2s; animation-delay:0s; }
+        .dv-node:nth-child(2) { width:5px;  height:5px;  top:45%; left:55%; background:var(--gold-muted);  animation-duration:2.8s; animation-delay:-1s; }
+        .dv-node:nth-child(3) { width:10px; height:10px; top:65%; left:25%; background:var(--gold-light);  animation-duration:3.6s; animation-delay:-2s; }
+        .dv-node:nth-child(4) { width:6px;  height:6px;  top:30%; left:70%; background:var(--bronze);      animation-duration:4s;   animation-delay:-0.5s; }
+        .dv-node:nth-child(5) { width:7px;  height:7px;  top:78%; left:60%; background:var(--gold-muted);  animation-duration:3s;   animation-delay:-1.8s; }
+        .dv-node:nth-child(6) { width:4px;  height:4px;  top:12%; left:50%; background:var(--gold-light);  animation-duration:2.5s; animation-delay:-0.8s; }
+
+        /* connecting lines between nodes (static, decorative) */
+        .dv-connector {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(184,160,126,0.15), rgba(184,160,126,0.35), rgba(184,160,126,0.15));
+            transform-origin: left center;
+            animation: dv-conn-fade 4s ease-in-out infinite;
+        }
+
+        @keyframes dv-conn-fade {
+            0%, 100% { opacity: 0.3; }
+            50%       { opacity: 0.8; }
+        }
+
+        .dv-connector:nth-child(1) { top:22%; left:32%; width:28%; transform: rotate(32deg); animation-delay:0s; }
+        .dv-connector:nth-child(2) { top:45%; left:57%; width:18%; transform: rotate(-45deg); animation-delay:-1s; }
+        .dv-connector:nth-child(3) { top:65%; left:27%; width:36%; transform: rotate(-25deg); animation-delay:-2s; }
+        .dv-connector:nth-child(4) { top:30%; left:30%; width:42%; transform: rotate(5deg);  animation-delay:-0.5s; }
+
+        /* subtle vignette */
+        .dv-vignette {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 60% 50%, transparent 30%, rgba(26,26,26,0.7) 100%);
+            z-index: 1;
         }
 
         .slide-13-text {
@@ -2020,7 +2137,7 @@
             pointer-events: none;
         }
 
-        .nav-arrow.visible {
+        .nav-arrow.visible.shown {
             opacity: 1;
             pointer-events: auto;
         }
@@ -2637,7 +2754,28 @@
         <!-- ══════════ SLIDE 13: ERA DIGITAL / REFORMAS 2025 ══════════ -->
         <section class="slide" id="slide-13" aria-label="Era Digital y Reformas al 2025">
             <div class="slide-13-image">
-                <img src="assets/digital_flow.png" alt="Flujo de datos abstracto en dorado" loading="lazy">
+                <div class="dv-wrap">
+                    <div class="dv-grid"></div>
+                    <!-- beams -->
+                    <div class="dv-beam"></div>
+                    <div class="dv-beam"></div>
+                    <div class="dv-beam"></div>
+                    <div class="dv-beam"></div>
+                    <div class="dv-beam"></div>
+                    <!-- connectors -->
+                    <div class="dv-connector"></div>
+                    <div class="dv-connector"></div>
+                    <div class="dv-connector"></div>
+                    <div class="dv-connector"></div>
+                    <!-- nodes -->
+                    <div class="dv-node"></div>
+                    <div class="dv-node"></div>
+                    <div class="dv-node"></div>
+                    <div class="dv-node"></div>
+                    <div class="dv-node"></div>
+                    <div class="dv-node"></div>
+                    <div class="dv-vignette"></div>
+                </div>
             </div>
             <div class="slide-13-text">
                 <span class="slide-label">Reformas hacia el 2025</span>
@@ -2904,6 +3042,21 @@
 
             progress.style.width = `${(1 / total) * 100}%`;
             prevBtn.classList.remove('visible');
+
+            // Auto-hide arrows on inactivity
+            let hideTimer;
+            function showArrows() {
+                prevBtn.classList.add('shown');
+                nextBtn.classList.add('shown');
+                clearTimeout(hideTimer);
+                hideTimer = setTimeout(() => {
+                    prevBtn.classList.remove('shown');
+                    nextBtn.classList.remove('shown');
+                }, 2500);
+            }
+            document.addEventListener('mousemove', showArrows);
+            document.addEventListener('click', showArrows);
+            document.addEventListener('touchstart', showArrows, { passive: true });
 
             // Fullscreen
             const fsBtn = document.getElementById('btn-fullscreen');
