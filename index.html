@@ -2072,7 +2072,7 @@
             position: fixed;
             bottom: 2rem;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%) translateY(8px);
             display: flex;
             align-items: center;
             gap: 0.6rem;
@@ -2083,6 +2083,15 @@
             -webkit-backdrop-filter: blur(16px);
             border-radius: 50px;
             border: 1px solid rgba(184, 160, 126, 0.15);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease, transform 0.35s ease;
+        }
+
+        .nav-container.shown {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
         }
 
         .nav-dot {
@@ -3043,20 +3052,45 @@
             progress.style.width = `${(1 / total) * 100}%`;
             prevBtn.classList.remove('visible');
 
-            // Auto-hide arrows on inactivity
-            let hideTimer;
-            function showArrows() {
+            // Auto-hide controls (PowerPoint-style)
+            const navContainer = document.querySelector('.nav-container');
+            let arrowTimer, navTimer;
+            const NAV_BOTTOM_ZONE = 110; // px from bottom to trigger nav dots
+
+            function showArrowsBriefly(ms = 2200) {
                 prevBtn.classList.add('shown');
                 nextBtn.classList.add('shown');
-                clearTimeout(hideTimer);
-                hideTimer = setTimeout(() => {
+                clearTimeout(arrowTimer);
+                arrowTimer = setTimeout(() => {
                     prevBtn.classList.remove('shown');
                     nextBtn.classList.remove('shown');
-                }, 2500);
+                }, ms);
             }
-            document.addEventListener('mousemove', showArrows);
-            document.addEventListener('click', showArrows);
-            document.addEventListener('touchstart', showArrows, { passive: true });
+
+            function hideArrowsNow() {
+                clearTimeout(arrowTimer);
+                arrowTimer = setTimeout(() => {
+                    prevBtn.classList.remove('shown');
+                    nextBtn.classList.remove('shown');
+                }, 350); // disappear fast after click
+            }
+
+            document.addEventListener('mousemove', (e) => {
+                // Arrows: show on any movement
+                showArrowsBriefly();
+                // Nav dots: only when near bottom
+                if (e.clientY > window.innerHeight - NAV_BOTTOM_ZONE) {
+                    navContainer.classList.add('shown');
+                    clearTimeout(navTimer);
+                    navTimer = setTimeout(() => navContainer.classList.remove('shown'), 2500);
+                }
+            });
+
+            // After clicking an arrow, hide controls quickly
+            prevBtn.addEventListener('click', hideArrowsNow);
+            nextBtn.addEventListener('click', hideArrowsNow);
+
+            document.addEventListener('touchstart', () => showArrowsBriefly(2200), { passive: true });
 
             // Fullscreen
             const fsBtn = document.getElementById('btn-fullscreen');
