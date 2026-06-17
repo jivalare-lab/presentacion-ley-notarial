@@ -504,6 +504,148 @@
         }
 
         /* ═══════════════════════════════════════════
+           SLIDE 3B — DEL MANUSCRITO A LA MÁQUINA
+        ═══════════════════════════════════════════ */
+        #slide-3b {
+            background: var(--charcoal-deep);
+            flex-direction: row;
+            align-items: stretch;
+        }
+
+        .slide-3b-left {
+            width: 38%;
+            background: rgba(184, 160, 126, 0.05);
+            border-right: 1px solid rgba(184, 160, 126, 0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: var(--slide-padding-v) var(--slide-padding);
+        }
+
+        #slide-3b .slide-title {
+            font-size: clamp(1.5rem, 3vw, 2.4rem);
+            color: var(--ivory);
+            margin-bottom: 0.4rem;
+        }
+
+        #slide-3b .slide-subtitle {
+            font-size: clamp(0.85rem, 1.3vw, 1rem);
+            color: var(--gold-light);
+            margin-bottom: 0.5rem;
+        }
+
+        #slide-3b .slide-divider {
+            width: 40px;
+            margin-bottom: 2rem;
+        }
+
+        .instrumento-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .instrumento-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            opacity: 0;
+            transform: translateX(-16px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .slide.active .instrumento-item:nth-child(1) { opacity:1; transform:translateX(0); transition-delay:0.4s; }
+        .slide.active .instrumento-item:nth-child(2) { opacity:1; transform:translateX(0); transition-delay:0.6s; }
+        .slide.active .instrumento-item:nth-child(3) { opacity:1; transform:translateX(0); transition-delay:0.8s; }
+
+        .instrumento-era {
+            font-family: var(--font-body);
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold-muted);
+        }
+
+        .instrumento-name {
+            font-family: var(--font-display);
+            font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+            font-weight: 600;
+            color: var(--ivory);
+        }
+
+        .instrumento-desc {
+            font-family: var(--font-body);
+            font-size: clamp(0.75rem, 1vw, 0.85rem);
+            color: rgba(214, 207, 196, 0.6);
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        .slide-3b-right {
+            width: 62%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: var(--slide-padding-v) var(--slide-padding);
+        }
+
+        .hitos-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+        }
+
+        .hito-item {
+            display: flex;
+            gap: 1.2rem;
+            align-items: flex-start;
+            opacity: 0;
+            transform: translateX(16px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .slide.active .hito-item:nth-child(1) { opacity:1; transform:translateX(0); transition-delay:0.45s; }
+        .slide.active .hito-item:nth-child(2) { opacity:1; transform:translateX(0); transition-delay:0.65s; }
+        .slide.active .hito-item:nth-child(3) { opacity:1; transform:translateX(0); transition-delay:0.85s; }
+        .slide.active .hito-item:nth-child(4) { opacity:1; transform:translateX(0); transition-delay:1.05s; }
+
+        .hito-year {
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 1.6vw, 1.2rem);
+            font-weight: 700;
+            color: var(--gold-muted);
+            flex-shrink: 0;
+            width: 3.5rem;
+            text-align: right;
+            padding-top: 0.1rem;
+        }
+
+        .hito-bar {
+            width: 2px;
+            background: rgba(184,160,126,0.3);
+            flex-shrink: 0;
+            align-self: stretch;
+            min-height: 40px;
+        }
+
+        .hito-content h4 {
+            font-family: var(--font-display);
+            font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+            font-weight: 600;
+            color: var(--ivory);
+            margin-bottom: 0.2rem;
+        }
+
+        .hito-content p {
+            font-family: var(--font-body);
+            font-size: clamp(0.75rem, 1vw, 0.85rem);
+            color: rgba(214, 207, 196, 0.6);
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        /* ═══════════════════════════════════════════
            SLIDE 4 — CLEMENTE YEROVI (HERO)
         ═══════════════════════════════════════════ */
         #slide-4 {
@@ -2145,6 +2287,22 @@
             line-height: 1.5;
         }
 
+        .biblio-item-link {
+            font-family: var(--font-body);
+            font-size: clamp(0.68rem, 0.88vw, 0.76rem);
+            color: var(--gold-muted);
+            font-weight: 400;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            word-break: break-all;
+            transition: color 0.2s ease;
+        }
+
+        .biblio-item-link:hover {
+            color: var(--gold-light);
+            text-decoration: underline;
+        }
+
         /* ═══════════════════════════════════════════
            NAVIGATION
         ═══════════════════════════════════════════ */
@@ -2481,6 +2639,70 @@
                     <li><strong>El Amanuense:</strong> Fedatario limitado a la transcripción, sin investidura institucional unificada ni cuerpo legal propio.</li>
                     <li><strong>El Problema:</strong> Dispersión legal entre el Código Civil, las Leyes de Indias y decretos aislados — sin protocolo uniforme ni garantía de certeza jurídica.</li>
                 </ul>
+            </div>
+        </section>
+
+        <!-- ══════════ SLIDE 3B: DEL MANUSCRITO A LA MÁQUINA ══════════ -->
+        <section class="slide" id="slide-3b" aria-label="Del manuscrito a la máquina: 1534–1966">
+            <div class="slide-3b-left">
+                <span class="slide-label">Los instrumentos · 1534–1966</span>
+                <h2 class="slide-title">Del Manuscrito<br>a la Máquina</h2>
+                <p class="slide-subtitle">Cuatro siglos de herramientas al servicio de la fe pública</p>
+                <div class="slide-divider"></div>
+                <div class="instrumento-list">
+                    <div class="instrumento-item">
+                        <span class="instrumento-era">Siglos XVI – XVIII</span>
+                        <span class="instrumento-name">Pluma de ganso y tinta</span>
+                        <span class="instrumento-desc">Todo instrumento público era manuscrito con pluma de ave (ganso o cisne) sobre papel sellado suministrado por la Corona. La caligrafía era credencial de autoridad.</span>
+                    </div>
+                    <div class="instrumento-item">
+                        <span class="instrumento-era">Siglo XIX</span>
+                        <span class="instrumento-name">Papel sellado y firma autógrafa</span>
+                        <span class="instrumento-desc">Con la República, el papel sellado continuó siendo obligatorio. Las escrituras, aún manuscritas, se rubricaban al pie de cada foja y se incorporaban cronológicamente al protocolo anual.</span>
+                    </div>
+                    <div class="instrumento-item">
+                        <span class="instrumento-era">Primeras décadas del siglo XX</span>
+                        <span class="instrumento-name">La máquina de escribir</span>
+                        <span class="instrumento-desc">Modelos Underwood y Remington ingresan progresivamente a las notarías. La escritura mecánica convive con la firma manuscrita obligatoria del escribano y las partes.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-3b-right">
+                <span class="slide-label">Hitos institucionales</span>
+                <div class="hitos-list">
+                    <div class="hito-item">
+                        <div class="hito-year">1680</div>
+                        <div class="hito-bar"></div>
+                        <div class="hito-content">
+                            <h4>Recopilación de Leyes de Indias</h4>
+                            <p>Codifica que los protocolos del escribano pasan con el cargo al sucesor — no a herederos ni viuda. Primera norma de conservación documental en Hispanoamérica. (Libro V, Título VIII)</p>
+                        </div>
+                    </div>
+                    <div class="hito-item">
+                        <div class="hito-year">1884</div>
+                        <div class="hito-bar"></div>
+                        <div class="hito-content">
+                            <h4>Archivo Nacional del Ecuador</h4>
+                            <p>Creado por Decreto Presidencial de José María Plácido Caamaño el 17 de enero de 1884. Custodia protocolos coloniales desde 1538. Primera institución republicana de memoria documental.</p>
+                        </div>
+                    </div>
+                    <div class="hito-item">
+                        <div class="hito-year">1937</div>
+                        <div class="hito-bar"></div>
+                        <div class="hito-content">
+                            <h4>Decreto Supremo 94 — "Escribanos" → "Notarios"</h4>
+                            <p>El Pdte. Federico Páez cambia oficialmente el nombre y otorga a los notarios la función exclusiva de fe pública extrajudicial con permanencia sujeta a buena conducta. (R.O. 464, 6-IV-1937)</p>
+                        </div>
+                    </div>
+                    <div class="hito-item">
+                        <div class="hito-year">1966</div>
+                        <div class="hito-bar"></div>
+                        <div class="hito-content">
+                            <h4>Decreto Supremo N.° 1404 — La Ley Notarial</h4>
+                            <p>Primer cuerpo orgánico unificado. Yerovi consolida cuatro siglos de normativa dispersa en una sola Ley. (R.O. 158, 11-XI-1966)</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -3007,47 +3229,58 @@
                     <div class="biblio-item">
                         <span class="biblio-item-tag">Norma principal</span>
                         <span class="biblio-item-title">Ley Notarial — Decreto Supremo N.° 1404</span>
-                        <span class="biblio-item-ref">Registro Oficial N.° 158, 11 de noviembre de 1966. Última reforma: R.O. Cuarto Suplemento 610, 29-VII-2024.</span>
+                        <span class="biblio-item-ref">R.O. N.° 158, 11-XI-1966. Última reforma: R.O. 4.° Suplemento 610, 29-VII-2024.</span>
+                        <a class="biblio-item-link" href="https://www.gob.ec/regulaciones/ley-notarial" target="_blank">gob.ec/regulaciones/ley-notarial</a>
                     </div>
                     <div class="biblio-item">
                         <span class="biblio-item-tag">Norma constitucional</span>
                         <span class="biblio-item-title">Constitución de la República del Ecuador</span>
-                        <span class="biblio-item-ref">Registro Oficial N.° 449, 20 de octubre de 2008. Art. 200: nombramiento de notarios por concurso de méritos.</span>
+                        <span class="biblio-item-ref">R.O. N.° 449, 20-X-2008. Art. 200: nombramiento de notarios por concurso de méritos y oposición.</span>
+                        <a class="biblio-item-link" href="https://www.oas.org/juridico/pdfs/mesicic4_ecu_const.pdf" target="_blank">oas.org — Texto oficial de la Constitución 2008</a>
                     </div>
                     <div class="biblio-item">
-                        <span class="biblio-item-tag">Reforma 1978</span>
-                        <span class="biblio-item-title">Decreto Supremo N.° 2386</span>
-                        <span class="biblio-item-ref">Registro Oficial N.° 564, 12 de abril de 1978. Agrega numerales 5 y 6 al Art. 18 de la Ley Notarial.</span>
+                        <span class="biblio-item-tag">Decreto 1937</span>
+                        <span class="biblio-item-title">Decreto Supremo N.° 94 — "Escribanos" → "Notarios"</span>
+                        <span class="biblio-item-ref">R.O. N.° 464, 6-IV-1937. Federico Páez otorga nombre y función exclusiva de fe pública extrajudicial.</span>
+                        <a class="biblio-item-link" href="https://fen.com.ec/Website1/resena/" target="_blank">fen.com.ec — Reseña histórica del notariado ecuatoriano</a>
                     </div>
                     <div class="biblio-item">
                         <span class="biblio-item-tag">Reforma 2006</span>
                         <span class="biblio-item-title">Ley N.° 2006-62</span>
-                        <span class="biblio-item-ref">Registro Oficial N.° 406, 28 de noviembre de 2006. Transfiere competencias extrajudiciales voluntarias al notariado.</span>
+                        <span class="biblio-item-ref">R.O. N.° 406, 28-XI-2006. Transfiere al notariado competencias extrajudiciales voluntarias.</span>
+                        <a class="biblio-item-link" href="https://www.gob.ec/regulaciones/ley-notarial" target="_blank">gob.ec/regulaciones/ley-notarial (incluye reformas)</a>
                     </div>
                     <div class="biblio-item">
                         <span class="biblio-item-tag">Reforma 2009</span>
                         <span class="biblio-item-title">Código Orgánico de la Función Judicial (COFJ)</span>
-                        <span class="biblio-item-ref">Registro Oficial Suplemento N.° 544, 9 de marzo de 2009. Deroga arts. 9–17 de la Ley Notarial; establece requisitos notariales.</span>
+                        <span class="biblio-item-ref">R.O. Suplemento N.° 544, 9-III-2009. Deroga arts. 9–17 de la Ley Notarial; rige requisitos y nombramiento de notarios.</span>
+                        <a class="biblio-item-link" href="https://www.gob.ec/regulaciones/codigo-organico-funcion-judicial" target="_blank">gob.ec/regulaciones/codigo-organico-funcion-judicial</a>
                     </div>
                     <div class="biblio-item">
                         <span class="biblio-item-tag">Reforma 2015</span>
                         <span class="biblio-item-title">Código Orgánico General de Procesos (COGEP)</span>
-                        <span class="biblio-item-ref">Registro Oficial Suplemento N.° 506, 22 de mayo de 2015. Amplía el Art. 18 con 8 nuevas atribuciones notariales.</span>
+                        <span class="biblio-item-ref">R.O. Suplemento N.° 506, 22-V-2015. Amplía Art. 18 con 8 nuevas atribuciones notariales.</span>
+                        <a class="biblio-item-link" href="https://www.cortenacional.gob.ec/cnj/images/pdf/publicaciones_cnj/COGEP.pdf" target="_blank">cortenacional.gob.ec — COGEP (texto completo)</a>
                     </div>
                     <div class="biblio-item">
                         <span class="biblio-item-tag">Reforma 2020 — Telemática</span>
                         <span class="biblio-item-title">Ley Orgánica Reformatoria del COFJ</span>
-                        <span class="biblio-item-ref">Registro Oficial Suplemento N.° 345, 8 de diciembre de 2020. Habilita comparecencia telemática; agrega arts. 18.1 y 18.2.</span>
+                        <span class="biblio-item-ref">R.O. Suplemento N.° 345, 8-XII-2020. Legaliza comparecencia telemática; añade arts. 18.1 y 18.2 a la Ley Notarial.</span>
+                        <a class="biblio-item-link" href="https://www.funcionjudicial.gob.ec/resources/pdf/ley%20reformatoria%20al%20COFJ.pdf" target="_blank">funcionjudicial.gob.ec — Ley Reformatoria al COFJ</a>
                     </div>
                     <div class="biblio-item">
                         <span class="biblio-item-tag">Protección de datos</span>
                         <span class="biblio-item-title">Ley Orgánica de Protección de Datos Personales (LOPDP)</span>
-                        <span class="biblio-item-ref">Registro Oficial Suplemento N.° 459, 26 de mayo de 2021. Regula tratamiento de datos personales en protocolos notariales.</span>
+                        <span class="biblio-item-ref">R.O. Suplemento N.° 459, 26-V-2021. Regula el tratamiento de datos en protocolos notariales.</span>
+                        <a class="biblio-item-link" href="https://www.gob.ec/regulaciones/ley-organica-proteccion-datos-personales" target="_blank">gob.ec/regulaciones/ley-organica-proteccion-datos-personales</a>
                     </div>
                     <div class="biblio-item">
-                        <span class="biblio-item-tag">Fuente histórica</span>
-                        <span class="biblio-item-title">Historia del Notariado Ecuatoriano — FEN</span>
-                        <span class="biblio-item-ref">Federación Ecuatoriana de Notarios (fen.com.ec). Primer escribano: Gonzalo Díaz de Pineda, acta de fundación de Quito, 28 de agosto de 1534.</span>
+                        <span class="biblio-item-tag">Fuentes históricas</span>
+                        <span class="biblio-item-title">Historia del Notariado Ecuatoriano · Archivo Nacional</span>
+                        <span class="biblio-item-ref">FEN: Gonzalo Díaz de Pineda, 28-VIII-1534. Archivo Nacional: creado 17-I-1884 (Pdte. Caamaño). Fondos desde 1538.</span>
+                        <a class="biblio-item-link" href="https://fen.com.ec/Website1/resena/" target="_blank">fen.com.ec/resena</a>
+                        &nbsp;·&nbsp;
+                        <a class="biblio-item-link" href="https://archivohistoriconacional.culturaypatrimonio.gob.ec/" target="_blank">archivohistoriconacional.gob.ec</a>
                     </div>
                 </div>
             </div>
@@ -3087,7 +3320,8 @@
         <button class="nav-dot" data-slide="15" aria-label="Diapositiva 16"></button>
         <button class="nav-dot" data-slide="16" aria-label="Diapositiva 17"></button>
         <button class="nav-dot" data-slide="17" aria-label="Diapositiva 18"></button>
-        <span class="nav-counter" id="navCounter">1 / 18</span>
+        <button class="nav-dot" data-slide="18" aria-label="Diapositiva 19"></button>
+        <span class="nav-counter" id="navCounter">1 / 19</span>
     </nav>
 
     <script>
