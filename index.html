@@ -2066,6 +2066,86 @@
         }
 
         /* ═══════════════════════════════════════════
+           SLIDE 18 — BIBLIOGRAFÍA
+        ═══════════════════════════════════════════ */
+        #slide-18 {
+            background: var(--ivory-soft);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide-18-content {
+            max-width: 1000px;
+            width: 100%;
+            padding: var(--slide-padding-v) var(--slide-padding);
+        }
+
+        #slide-18 .slide-title {
+            font-size: clamp(1.4rem, 2.8vw, 2rem);
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        #slide-18 .slide-divider {
+            width: 45px;
+            background: var(--bronze);
+            margin-bottom: 2rem;
+        }
+
+        .biblio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem 2.5rem;
+        }
+
+        .biblio-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--beige-mid);
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .slide.active .biblio-item:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+        .slide.active .biblio-item:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
+        .slide.active .biblio-item:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
+        .slide.active .biblio-item:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
+        .slide.active .biblio-item:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 0.7s; }
+        .slide.active .biblio-item:nth-child(6) { opacity: 1; transform: translateY(0); transition-delay: 0.8s; }
+        .slide.active .biblio-item:nth-child(7) { opacity: 1; transform: translateY(0); transition-delay: 0.9s; }
+        .slide.active .biblio-item:nth-child(8) { opacity: 1; transform: translateY(0); transition-delay: 1.0s; }
+        .slide.active .biblio-item:nth-child(9) { opacity: 1; transform: translateY(0); transition-delay: 1.1s; }
+
+        .biblio-item-tag {
+            font-family: var(--font-body);
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--bronze);
+        }
+
+        .biblio-item-title {
+            font-family: var(--font-display);
+            font-size: clamp(0.82rem, 1.1vw, 0.95rem);
+            font-weight: 600;
+            color: var(--charcoal);
+            line-height: 1.3;
+        }
+
+        .biblio-item-ref {
+            font-family: var(--font-body);
+            font-size: clamp(0.72rem, 0.95vw, 0.82rem);
+            color: var(--slate);
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        /* ═══════════════════════════════════════════
            NAVIGATION
         ═══════════════════════════════════════════ */
         .nav-container {
@@ -2396,14 +2476,10 @@
                 <h2 class="slide-title">Antes de la Ley:<br>La Época de los Escribanos</h2>
                 <div class="slide-divider" style="width:40px;margin-bottom:2rem;"></div>
                 <ul class="slide-body">
-                    <li><strong>1534:</strong> Gonzalo Díaz y la fundación de Quito. El primer escribano en territorio
-                        ecuatoriano.</li>
-                    <li><strong>Herencia Indiana:</strong> Transcripción manual bajo las Leyes de Indias. Sin cuerpo
-                        legal propio.</li>
-                    <li><strong>El Amanuense:</strong> Fedatario limitado a la transcripción, sin investidura
-                        institucional unificada.</li>
-                    <li><strong>El Problema:</strong> Dispersión legal, falta de protocolo uniforme y nula garantía de
-                        certeza jurídica.</li>
+                    <li><strong>28 agosto 1534:</strong> Gonzalo Díaz de Pineda extiende el acta de fundación de Quito — primera actuación notarial registrada en el territorio ecuatoriano.</li>
+                    <li><strong>Leyes de Indias:</strong> Los escribanos eran nombrados en número determinado por cada circunscripción y ejercían con carácter vitalicio bajo título real y examen ante la Real Audiencia.</li>
+                    <li><strong>El Amanuense:</strong> Fedatario limitado a la transcripción, sin investidura institucional unificada ni cuerpo legal propio.</li>
+                    <li><strong>El Problema:</strong> Dispersión legal entre el Código Civil, las Leyes de Indias y decretos aislados — sin protocolo uniforme ni garantía de certeza jurídica.</li>
                 </ul>
             </div>
         </section>
@@ -2431,11 +2507,9 @@
                         comercio y el patrimonio por medio siglo.</li>
                 </ul>
                 <div class="decreto-card">
-                    <div class="decreto-card-header">Registro Oficial · República del Ecuador</div>
+                    <div class="decreto-card-header">Registro Oficial N.° 158 · 11 de noviembre de 1966</div>
                     <div class="decreto-card-title">Decreto Supremo N.° 1404</div>
-                    <div class="decreto-card-body">«Expídese la Ley Notarial que regula el ejercicio de la función
-                        notarial en el Ecuador, estableciendo las atribuciones, deberes y responsabilidades de los
-                        Notarios de la República...»</div>
+                    <div class="decreto-card-body">«Que la función notarial, no obstante su importancia y garantía para el desenvolvimiento de los negocios jurídicos, se rige en nuestro país por disposiciones constantes en diversas leyes... Que es necesario que el país cuente con una Ley que regule no sólo la función notarial y el instrumento público, sino también la organización de los Depositarios de la fe pública.»</div>
                 </div>
                 <div class="year-stamp">1966</div>
             </div>
@@ -2484,51 +2558,48 @@
                         <div class="timeline-year">1966</div>
                         <div class="timeline-dot major"></div>
                         <div class="timeline-text">
-                            <h4>Decreto Supremo 1404 — La Ley Notarial</h4>
-                            <p>Yerovi crea el sistema notarial unificado ecuatoriano.</p>
+                            <h4>Decreto Supremo N.° 1404 — La Ley Notarial</h4>
+                            <p>Yerovi unifica la función notarial bajo un solo cuerpo legal. R.O. 158, 11 de noviembre de 1966.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-year">1978</div>
                         <div class="timeline-dot"></div>
                         <div class="timeline-text">
-                            <h4>Primera Gran Reforma</h4>
-                            <p>Ampliación de competencias. Nuevos actos sujetos a escritura pública.</p>
+                            <h4>D.S. 2386 — Ampliación del Art. 18</h4>
+                            <p>Se agregan atribuciones: certificación de documentos y levantamiento de protestos. R.O. 564, 12 de abril de 1978.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-year">2006</div>
                         <div class="timeline-dot"></div>
                         <div class="timeline-text">
-                            <h4>Reforma de Competencias Extrajudiciales</h4>
-                            <p>Se trasladan al notariado funciones de descongestión judicial: posesiones efectivas y
-                                disoluciones.</p>
+                            <h4>Ley 2006-62 — Competencias Extrajudiciales</h4>
+                            <p>Traslado al notariado de funciones judiciales voluntarias: divorcios, posesiones efectivas, uniones de hecho. R.O. 406, 28-XI-2006.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
-                        <div class="timeline-year">2008</div>
+                        <div class="timeline-year">2008–09</div>
                         <div class="timeline-dot major"></div>
                         <div class="timeline-text">
                             <h4>Constitución de Montecristi + COFJ</h4>
-                            <p>El notario como operador de justicia. Divorcios, tutelas, reconocimientos. El mayor salto
-                                competencial en 40 años.</p>
+                            <p>El notario como operador de justicia preventiva. Constitución: R.O. 449, 20-X-2008. COFJ: R.O. 544-S, 9-III-2009.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-year">2015</div>
                         <div class="timeline-dot"></div>
                         <div class="timeline-text">
-                            <h4>Código Orgánico General de Procesos (COGEP)</h4>
-                            <p>Nuevas atribuciones en mediación prejudicial y actuaciones sumarísimas.</p>
+                            <h4>COGEP — Nuevas Atribuciones Notariales</h4>
+                            <p>El Código Orgánico General de Procesos amplía Art. 18 con 8 nuevas atribuciones. R.O. 506-S, 22-V-2015.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
-                        <div class="timeline-year">2021–25</div>
+                        <div class="timeline-year">2020–21</div>
                         <div class="timeline-dot major"></div>
                         <div class="timeline-text">
-                            <h4>Era Digital: LOPDP + Firma Electrónica</h4>
-                            <p>Desmaterialización del protocolo. Comparecencia telemática. Protección de datos
-                                personales en actos notariales.</p>
+                            <h4>Era Digital: Telemática + LOPDP</h4>
+                            <p>Comparecencia telemática legalizada (R.O. 345-S, 8-XII-2020). Ley Orgánica de Protección de Datos Personales (R.O. 459, 26-V-2021).</p>
                         </div>
                     </div>
                 </div>
@@ -2554,10 +2625,9 @@
                 </div>
                 <div class="slide-7-quote-block">
                     <blockquote>
-                        «El Notario es el primer juez de la voluntad de las partes. Su función es la justicia
-                        preventiva: evitar el conflicto antes de que nazca.»
+                        «Que es necesario que el país cuente con una Ley que regule no sólo la función notarial y el instrumento público, sino también la organización de los Depositarios de la fe pública para lograr la jerarquización del notario ecuatoriano.»
                     </blockquote>
-                    <cite>Doctrina Notarial Latinoamericana</cite>
+                    <cite>Clemente Yerovi Indaburu — Considerandos del Decreto Supremo N.° 1404, 1966</cite>
                 </div>
             </div>
         </section>
@@ -2565,9 +2635,9 @@
         <!-- ══════════ SLIDE 8: REQUISITOS PARA SER NOTARIO ══════════ -->
         <section class="slide" id="slide-8" aria-label="Requisitos para ser Notario">
             <div class="slide-8-left">
-                <span class="slide-label">Art. 6 · Ley Notarial</span>
+                <span class="slide-label">COFJ · Const. Art. 200</span>
                 <h2 class="slide-title">Requisitos para ser Notario</h2>
-                <p class="slide-subtitle">La investidura más exigente del derecho ecuatoriano</p>
+                <p class="slide-subtitle">Código Orgánico de la Función Judicial y Constitución de la República</p>
                 <div class="slide-divider"></div>
             </div>
             <div class="slide-8-right">
@@ -2577,9 +2647,8 @@
                                 <polyline points="2,6 5,9 10,3" />
                             </svg></div>
                         <div class="requisito-text">
-                            <h4>Título de Abogado</h4>
-                            <p>Conferido por universidad reconocida por el SENESCYT. Habilitación profesional vigente.
-                            </p>
+                            <h4>Título de Abogado o Doctor en Jurisprudencia</h4>
+                            <p>Título de tercer nivel en derecho, legalmente reconocido en el Ecuador.</p>
                         </div>
                     </li>
                     <li class="requisito-item">
@@ -2587,8 +2656,26 @@
                                 <polyline points="2,6 5,9 10,3" />
                             </svg></div>
                         <div class="requisito-text">
-                            <h4>Ciudadanía Ecuatoriana</h4>
-                            <p>Nacido en Ecuador o naturalizado. Goce pleno de derechos políticos y civiles.</p>
+                            <h4>Ciudadanía Ecuatoriana en ejercicio</h4>
+                            <p>Goce pleno de derechos políticos y civiles al momento del concurso.</p>
+                        </div>
+                    </li>
+                    <li class="requisito-item">
+                        <div class="requisito-check"><svg viewBox="0 0 12 12">
+                                <polyline points="2,6 5,9 10,3" />
+                            </svg></div>
+                        <div class="requisito-text">
+                            <h4>Mínimo 3 años de ejercicio profesional</h4>
+                            <p>Práctica jurídica con notoria probidad, acreditada antes del concurso.</p>
+                        </div>
+                    </li>
+                    <li class="requisito-item">
+                        <div class="requisito-check"><svg viewBox="0 0 12 12">
+                                <polyline points="2,6 5,9 10,3" />
+                            </svg></div>
+                        <div class="requisito-text">
+                            <h4>Buena reputación e idoneidad</h4>
+                            <p>Acreditada ante tribunal integrado por delegados del Consejo de la Judicatura, del Colegio de Notarios y del Colegio de Abogados.</p>
                         </div>
                     </li>
                     <li class="requisito-item">
@@ -2597,27 +2684,7 @@
                             </svg></div>
                         <div class="requisito-text">
                             <h4>Concurso de Méritos y Oposición</h4>
-                            <p>Proceso ante el Consejo de la Judicatura. La notaría no se compra ni se hereda — se gana.
-                            </p>
-                        </div>
-                    </li>
-                    <li class="requisito-item">
-                        <div class="requisito-check"><svg viewBox="0 0 12 12">
-                                <polyline points="2,6 5,9 10,3" />
-                            </svg></div>
-                        <div class="requisito-text">
-                            <h4>Probidad e Idoneidad</h4>
-                            <p>Sin condenas penales, sin sanciones disciplinarias. El carácter es el primer requisito.
-                            </p>
-                        </div>
-                    </li>
-                    <li class="requisito-item">
-                        <div class="requisito-check"><svg viewBox="0 0 12 12">
-                                <polyline points="2,6 5,9 10,3" />
-                            </svg></div>
-                        <div class="requisito-text">
-                            <h4>Experiencia Profesional</h4>
-                            <p>Mínimo de años de práctica jurídica acreditada antes del concurso.</p>
+                            <p>Proceso público convocado por el Consejo de la Judicatura, sujeto a impugnación y control social. Const. Art. 200.</p>
                         </div>
                     </li>
                 </ul>
@@ -2628,30 +2695,26 @@
         <section class="slide" id="slide-9" aria-label="Prohibiciones del Notario Art. 14">
             <div class="slide-9-accent"></div>
             <div class="slide-9-text">
-                <span class="slide-label">Art. 14 · Ley Notarial</span>
+                <span class="slide-label">Art. 20 · Ley Notarial</span>
                 <h2 class="slide-title">Prohibiciones:<br>El Escudo de la Imparcialidad</h2>
-                <p class="slide-subtitle">Lo que el Notario nunca puede hacer, por ningún motivo</p>
+                <p class="slide-subtitle">Lo que el Notario nunca puede hacer, por ningún motivo — Art. 20, Ley Notarial</p>
                 <div class="slide-divider" style="width:45px;margin-bottom:2rem;"></div>
                 <div class="prohibiciones-grid">
                     <div class="prohibicion-card">
                         <h4>No al Libre Ejercicio</h4>
-                        <p>El cargo notarial es incompatible con el ejercicio independiente de la abogacía. No puede ser
-                            abogado de ninguna parte.</p>
+                        <p>Prohibido ejercer libremente la abogacía o desempeñar cargo público o privado remunerado, excepto la docencia universitaria. (Art. 20, num. 5)</p>
                     </div>
                     <div class="prohibicion-card">
                         <h4>No al Interés Personal</h4>
-                        <p>Está prohibido intervenir en actos o contratos donde el notario, su cónyuge o parientes
-                            tengan interés directo.</p>
+                        <p>Prohibido autorizar escrituras en que el notario, su cónyuge o parientes dentro del cuarto grado de consanguinidad o segundo de afinidad tengan interés directo. (Art. 20, num. 3)</p>
                     </div>
                     <div class="prohibicion-card">
-                        <h4>No a Cargos Incompatibles</h4>
-                        <p>No puede desempeñar simultáneamente cargos de elección popular, funciones ejecutivas o
-                            judiciales.</p>
+                        <h4>No a Escrituras Simuladas</h4>
+                        <p>Prohibido otorgar, a sabiendas, escrituras simuladas o autorizar actos donde no se determine con precisión la cuantía del contrato. (Art. 20, nums. 4 y 7)</p>
                     </div>
                     <div class="prohibicion-card">
-                        <h4>No a la Delegación Total</h4>
-                        <p>La fe pública es personal e indelegable. El notario no puede firmar en blanco ni autorizar
-                            sin presencia real.</p>
+                        <h4>No a Vulnerar el Secreto</h4>
+                        <p>Prohibido permitir que, mientras viva el testador, alguien se informe de sus disposiciones testamentarias, salvo el propio testador. (Art. 20, num. 6)</p>
                     </div>
                 </div>
             </div>
@@ -2787,19 +2850,15 @@
                 </div>
             </div>
             <div class="slide-13-text">
-                <span class="slide-label">Reformas hacia el 2025</span>
+                <span class="slide-label">Reforma · R.O. 345-S, 8-XII-2020</span>
                 <h2 class="slide-title">La Era Digital</h2>
-                <p class="slide-subtitle">La Desmaterialización del Protocolo</p>
+                <p class="slide-subtitle">Comparecencia Telemática: Ley vigente desde el 8 de diciembre de 2020</p>
                 <div class="slide-divider"></div>
                 <ul class="slide-body">
-                    <li><strong>La Matriz Digital:</strong> Transición del protocolo físico al archivo digital
-                        interoperable con el Estado.</li>
-                    <li><strong>Identidad Telemática:</strong> Firmas electrónicas y comparecencia a través de
-                        videollamadas certificadas.</li>
-                    <li><strong>Interoperabilidad:</strong> Conexión con el Registro Civil, ANT, Superintendencias y SRI
-                        en tiempo real.</li>
-                    <li><strong>Solemnidad Intacta:</strong> La tecnología es el vehículo. El criterio del Notario sigue
-                        siendo irremplazable.</li>
+                    <li><strong>Servicio telemático legal:</strong> La Ley Orgánica Reformatoria del COFJ (R.O. 345-S, 8-XII-2020) habilita actos notariales por videoconferencia a través de la plataforma del Consejo de la Judicatura.</li>
+                    <li><strong>Firma electrónica:</strong> Los comparecientes remotos suscriben con firma electrónica reconocida; el protocolo digital archiva la videoconferencia íntegra. (Art. 18.1)</li>
+                    <li><strong>Actos que siguen siendo presenciales:</strong> Testamento cerrado, autorización de salida de menores, apertura de testamento cerrado y autenticación de firmas manuscritas. (Art. 18.2)</li>
+                    <li><strong>Solemnidad intacta:</strong> El notario verifica capacidad, conocimiento y voluntad libre a través de la plataforma oficial. La tecnología es el vehículo; el criterio notarial, irremplazable.</li>
                 </ul>
             </div>
         </section>
@@ -2812,23 +2871,23 @@
                 <div class="slide-divider"></div>
                 <div class="firma-grid">
                     <div class="firma-panel dark">
-                        <div class="firma-panel-tag">Lo que permite</div>
+                        <div class="firma-panel-tag">Lo que habilita el Art. 18.1 (desde 2020)</div>
                         <h3>Actos sin Presencia Física</h3>
                         <ul>
-                            <li>Comparecencia por videoconferencia certificada y grabada.</li>
-                            <li>Firma electrónica cualificada con la misma validez legal que la firma manuscrita.</li>
-                            <li>Envío y recepción de minutas a través de plataformas seguras del Estado.</li>
-                            <li>Copias certificadas digitales con código de verificación oficial.</li>
+                            <li>Comparecencia por videoconferencia a través de la plataforma del Consejo de la Judicatura, con grabación íntegra en el protocolo digital.</li>
+                            <li>Firma electrónica de todos los otorgantes y del notario — misma validez que la firma manuscrita.</li>
+                            <li>Minutas firmadas electrónicamente por abogado patrocinador, con número de matrícula.</li>
+                            <li>Copias electrónicas certificadas con firma electrónica notarial. (Art. 18, num. 5b)</li>
                         </ul>
                     </div>
                     <div class="firma-panel light">
-                        <div class="firma-panel-tag">Lo que no cambia</div>
-                        <h3>La Esencia Notarial</h3>
+                        <div class="firma-panel-tag">Lo que exige el Art. 18.2 — presencia física obligatoria</div>
+                        <h3>Actos que No Admiten Telemática</h3>
                         <ul>
-                            <li>El Notario debe identificar y evaluar la capacidad del compareciente.</li>
-                            <li>La voluntad libre y consciente sigue siendo el requisito fundamental.</li>
-                            <li>El asesoramiento previo e imparcial es un deber irrenunciable.</li>
-                            <li>La responsabilidad civil y penal del Notario es la misma en actos digitales.</li>
+                            <li>Testamento cerrado — requiere presencia física del testador.</li>
+                            <li>Autorización de salida del país de menores de edad.</li>
+                            <li>Apertura y publicación de testamento cerrado.</li>
+                            <li>Autenticación de firmas manuscritas ante el notario.</li>
                         </ul>
                     </div>
                 </div>
@@ -2838,10 +2897,9 @@
         <!-- ══════════ SLIDE 15: PROTECCIÓN DE DATOS ══════════ -->
         <section class="slide" id="slide-15" aria-label="Protección de Datos Personales">
             <div class="slide-15-left">
-                <span class="slide-label">LOPDP · 2021</span>
+                <span class="slide-label">LOPDP · R.O. 459, 26-V-2021</span>
                 <h2 class="slide-title">Protección de<br>Datos en Actos Notariales</h2>
-                <p class="slide-subtitle">La Ley Orgánica de Protección de Datos Personales y su impacto directo en la
-                    función notarial</p>
+                <p class="slide-subtitle">Ley Orgánica de Protección de Datos Personales — publicada en R.O. Suplemento 459 el 26 de mayo de 2021</p>
                 <div class="slide-divider"></div>
                 <ul class="slide-body">
                     <li>El notario es <strong>responsable del tratamiento</strong> de datos personales que constan en
@@ -2883,7 +2941,7 @@
         <!-- ══════════ SLIDE 16: ECOSISTEMA DEL MAÑANA ══════════ -->
         <section class="slide" id="slide-16" aria-label="El Ecosistema Notarial del Mañana">
             <div class="slide-16-content">
-                <span class="slide-label">El Mañana</span>
+                <span class="slide-label">Perspectivas · Tendencias en desarrollo</span>
                 <h2 class="slide-title">El Ecosistema Notarial<br>del Mañana</h2>
                 <div class="slide-divider"></div>
                 <div class="slide-16-grid">
@@ -2895,9 +2953,8 @@
                             <circle cx="12" cy="10" r="2" />
                         </svg>
                         <div class="slide-16-accent-line"></div>
-                        <h3>Datos a Gran Escala</h3>
-                        <p>La función notarial del futuro asimila volúmenes masivos de información sin comprometer
-                            seguridad ni solemnidad.</p>
+                        <h3>Interoperabilidad con el Estado</h3>
+                        <p>Tendencia hacia la integración progresiva de sistemas notariales con bases de datos estatales (Registro Civil, SRI, Superintendencias), en proceso de desarrollo regulatorio.</p>
                     </div>
                     <div class="slide-16-card">
                         <svg class="slide-16-card-icon" viewBox="0 0 24 24">
@@ -2906,9 +2963,8 @@
                             <path d="M2 12l10 5 10-5" />
                         </svg>
                         <div class="slide-16-accent-line"></div>
-                        <h3>Copiloto Operativo</h3>
-                        <p>Software especializado que asiste al fedatario en verificación cruzada con bases de datos
-                            estatales en tiempo real.</p>
+                        <h3>Protocolo Íntegramente Digital</h3>
+                        <p>El protocolo digital ya existe en la norma (Art. 18.1). La tendencia apunta hacia el archivo digital completo, con garantías de seguridad e inalterabilidad equivalentes al papel.</p>
                     </div>
                     <div class="slide-16-card">
                         <svg class="slide-16-card-icon" viewBox="0 0 24 24">
@@ -2916,9 +2972,8 @@
                             <polyline points="22 4 12 14.01 9 11.01" />
                         </svg>
                         <div class="slide-16-accent-line"></div>
-                        <h3>Margen de Error Cero</h3>
-                        <p>La tecnología mitiga el error humano en la forma. El Notario enfoca su intelecto en el
-                            análisis jurídico de fondo.</p>
+                        <h3>El Notario como Eje del Ecosistema</h3>
+                        <p>En cualquier escenario tecnológico, el criterio humano del fedatario sigue siendo el núcleo irrenunciable: identidad, capacidad y voluntad libre no se pueden delegar a un algoritmo.</p>
                     </div>
                 </div>
             </div>
@@ -2938,6 +2993,62 @@
                     <div class="slide-17-signature-line"></div>
                     <div class="slide-17-signature-name">Dr. Jorge Isaac Valarezo Guerrero</div>
                     <div class="slide-17-signature-title">Notario 54° del Cantón Quito</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════ SLIDE 18: BIBLIOGRAFÍA ══════════ -->
+        <section class="slide" id="slide-18" aria-label="Bibliografía y Fuentes">
+            <div class="slide-18-content">
+                <span class="slide-label">Fuentes y Referencias Legales</span>
+                <h2 class="slide-title">Bibliografía</h2>
+                <div class="slide-divider"></div>
+                <div class="biblio-grid">
+                    <div class="biblio-item">
+                        <span class="biblio-item-tag">Norma principal</span>
+                        <span class="biblio-item-title">Ley Notarial — Decreto Supremo N.° 1404</span>
+                        <span class="biblio-item-ref">Registro Oficial N.° 158, 11 de noviembre de 1966. Última reforma: R.O. Cuarto Suplemento 610, 29-VII-2024.</span>
+                    </div>
+                    <div class="biblio-item">
+                        <span class="biblio-item-tag">Norma constitucional</span>
+                        <span class="biblio-item-title">Constitución de la República del Ecuador</span>
+                        <span class="biblio-item-ref">Registro Oficial N.° 449, 20 de octubre de 2008. Art. 200: nombramiento de notarios por concurso de méritos.</span>
+                    </div>
+                    <div class="biblio-item">
+                        <span class="biblio-item-tag">Reforma 1978</span>
+                        <span class="biblio-item-title">Decreto Supremo N.° 2386</span>
+                        <span class="biblio-item-ref">Registro Oficial N.° 564, 12 de abril de 1978. Agrega numerales 5 y 6 al Art. 18 de la Ley Notarial.</span>
+                    </div>
+                    <div class="biblio-item">
+                        <span class="biblio-item-tag">Reforma 2006</span>
+                        <span class="biblio-item-title">Ley N.° 2006-62</span>
+                        <span class="biblio-item-ref">Registro Oficial N.° 406, 28 de noviembre de 2006. Transfiere competencias extrajudiciales voluntarias al notariado.</span>
+                    </div>
+                    <div class="biblio-item">
+                        <span class="biblio-item-tag">Reforma 2009</span>
+                        <span class="biblio-item-title">Código Orgánico de la Función Judicial (COFJ)</span>
+                        <span class="biblio-item-ref">Registro Oficial Suplemento N.° 544, 9 de marzo de 2009. Deroga arts. 9–17 de la Ley Notarial; establece requisitos notariales.</span>
+                    </div>
+                    <div class="biblio-item">
+                        <span class="biblio-item-tag">Reforma 2015</span>
+                        <span class="biblio-item-title">Código Orgánico General de Procesos (COGEP)</span>
+                        <span class="biblio-item-ref">Registro Oficial Suplemento N.° 506, 22 de mayo de 2015. Amplía el Art. 18 con 8 nuevas atribuciones notariales.</span>
+                    </div>
+                    <div class="biblio-item">
+                        <span class="biblio-item-tag">Reforma 2020 — Telemática</span>
+                        <span class="biblio-item-title">Ley Orgánica Reformatoria del COFJ</span>
+                        <span class="biblio-item-ref">Registro Oficial Suplemento N.° 345, 8 de diciembre de 2020. Habilita comparecencia telemática; agrega arts. 18.1 y 18.2.</span>
+                    </div>
+                    <div class="biblio-item">
+                        <span class="biblio-item-tag">Protección de datos</span>
+                        <span class="biblio-item-title">Ley Orgánica de Protección de Datos Personales (LOPDP)</span>
+                        <span class="biblio-item-ref">Registro Oficial Suplemento N.° 459, 26 de mayo de 2021. Regula tratamiento de datos personales en protocolos notariales.</span>
+                    </div>
+                    <div class="biblio-item">
+                        <span class="biblio-item-tag">Fuente histórica</span>
+                        <span class="biblio-item-title">Historia del Notariado Ecuatoriano — FEN</span>
+                        <span class="biblio-item-ref">Federación Ecuatoriana de Notarios (fen.com.ec). Primer escribano: Gonzalo Díaz de Pineda, acta de fundación de Quito, 28 de agosto de 1534.</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -2975,7 +3086,8 @@
         <button class="nav-dot" data-slide="14" aria-label="Diapositiva 15"></button>
         <button class="nav-dot" data-slide="15" aria-label="Diapositiva 16"></button>
         <button class="nav-dot" data-slide="16" aria-label="Diapositiva 17"></button>
-        <span class="nav-counter" id="navCounter">1 / 17</span>
+        <button class="nav-dot" data-slide="17" aria-label="Diapositiva 18"></button>
+        <span class="nav-counter" id="navCounter">1 / 18</span>
     </nav>
 
     <script>
